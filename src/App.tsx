@@ -354,6 +354,15 @@ export default function App() {
     }
   }, [selectedProductId, isLiquidation, selectedCurrency, activeEvent]);
 
+  // Auto-select the first SKU on load so the workspace is never idle
+  useEffect(() => {
+    if (products.length === 0) {
+      setSelectedProductId("");
+    } else if (!selectedProductId || !products.some((p) => p.id === selectedProductId)) {
+      setSelectedProductId(products[0].id);
+    }
+  }, [products.length]);
+
   // Generate recommendations/suggestions when products list changes
   useEffect(() => {
     generateListingSuggestions(products);
@@ -974,7 +983,7 @@ export default function App() {
           </button>
 
           {/* Autopilot Master Switch */}
-          <label className="flex items-center gap-2 bg-slate-100 hover:bg-slate-150 px-3.5 py-2 rounded-lg cursor-pointer transition-colors border border-slate-200">
+          <label className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-lg cursor-pointer transition-colors border border-slate-200">
             <input
               type="checkbox"
               checked={autoApplyActive}
@@ -1122,8 +1131,8 @@ export default function App() {
             <div className="flex-1 overflow-y-auto space-y-2.5 pr-1 max-h-[500px]">
               {products.length === 0 ? (
                 <div className="text-center py-16 text-slate-400 border border-dashed border-slate-200 rounded-xl bg-slate-50/50">
-                  <Briefcase className="w-8 h-8 mx-auto text-slate-350 mb-2" />
-                  <p className="text-xs font-medium text-slate-650">Your inventory catalog is empty.</p>
+                  <Briefcase className="w-8 h-8 mx-auto text-slate-300 mb-2" />
+                  <p className="text-xs font-medium text-slate-600">Your inventory catalog is empty.</p>
                   <p className="text-[10px] text-slate-400 max-w-[200px] mx-auto mt-1 leading-relaxed">Click "Launch SKU" to start adding your own products, costs, and storefront channels.</p>
                 </div>
               ) : (
@@ -1141,7 +1150,7 @@ export default function App() {
                       className={`p-3 rounded-lg border transition-all cursor-pointer flex flex-col gap-2 relative group ${
                         isSelected 
                           ? 'bg-red-50/20 border-red-500 ring-1 ring-red-500/10' 
-                          : 'bg-white border-slate-200 hover:border-slate-350'
+                          : 'bg-white border-slate-200 hover:border-slate-300'
                       }`}
                     >
                       {/* HOVER METADATA POPUP */}
@@ -1233,7 +1242,7 @@ export default function App() {
                 </button>
                 <button
                   onClick={handleClearCatalog}
-                  className="text-slate-405 hover:text-red-600 font-bold transition-colors cursor-pointer"
+                  className="text-slate-400 hover:text-red-600 font-bold transition-colors cursor-pointer"
                 >
                   Wipe Catalog
                 </button>
@@ -1251,7 +1260,7 @@ export default function App() {
           <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm relative group">
             
             {/* HOVER TOOLTIP HELP BAR */}
-            <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-slate-900 text-white text-[9px] px-2 py-1 rounded shadow-lg pointer-events-none transition-opacity -top-3 left-4 border border-slate-750">
+            <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-slate-900 text-white text-[9px] px-2 py-1 rounded shadow-lg pointer-events-none transition-opacity -top-3 left-4 border border-slate-700">
               💡 Drag cursor over graph columns to inspect historical volatility ratings.
             </div>
 
@@ -1283,7 +1292,7 @@ export default function App() {
             </div>
 
             {/* SVG Interactive Chart */}
-            <div className="h-32 bg-slate-50 border border-slate-155 rounded-lg relative overflow-hidden flex items-end p-2 mb-3">
+            <div className="h-32 bg-slate-50 border border-slate-100 rounded-lg relative overflow-hidden flex items-end p-2 mb-3">
               {/* Grid Background Lines */}
               <div className="absolute inset-0 flex flex-col justify-between p-2 pointer-events-none">
                 <div className="border-b border-slate-200/50 w-full" />
@@ -1351,7 +1360,7 @@ export default function App() {
             </div>
 
             {/* Active Factor Impact explanation */}
-            <div className="text-xs text-slate-650 bg-red-50/20 border border-red-100/50 p-3 rounded-lg flex items-start gap-2.5">
+            <div className="text-xs text-slate-600 bg-red-50/20 border border-red-100/50 p-3 rounded-lg flex items-start gap-2.5">
               <Zap className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
               <div>
                 <span className="font-semibold text-slate-700">Market Shift Context: </span>
@@ -1369,7 +1378,7 @@ export default function App() {
               </div>
               <div className="space-y-1 overflow-y-auto h-full scrollbar-thin">
                 {scraperLogs.map((log, idx) => (
-                  <div key={idx} className={idx === 0 ? "text-red-400 font-bold" : "text-red-650"}>
+                  <div key={idx} className={idx === 0 ? "text-red-400 font-bold" : "text-red-600"}>
                     {log}
                   </div>
                 ))}
@@ -1465,7 +1474,7 @@ export default function App() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                       
                       {/* Heuristic Programmatic engine proposal */}
-                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 flex flex-col justify-between relative group">
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col justify-between relative group">
                         
                         {/* HOVER DETAIL POP */}
                         <div className="absolute z-35 hidden group-hover:block bg-slate-900 text-white text-[9px] p-2.5 rounded shadow-xl -top-16 left-2 w-48 pointer-events-none animate-in fade-in zoom-in-95 duration-100 border border-slate-700">
@@ -1503,14 +1512,14 @@ export default function App() {
                         <button
                           onClick={applyHeuristicPrice}
                           disabled={!heuristicResult}
-                          className="w-full mt-4 bg-slate-850 hover:bg-slate-900 text-white text-xs font-bold py-2 rounded-lg transition-colors cursor-pointer disabled:opacity-50"
+                          className="w-full mt-4 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2 rounded-lg transition-colors cursor-pointer disabled:opacity-50"
                         >
                           Apply Rule Price
                         </button>
                       </div>
 
                       {/* Gemini Cognitive Intelligence proposal */}
-                      <div className="bg-red-50/10 p-4 rounded-xl border border-red-105 flex flex-col justify-between relative group">
+                      <div className="bg-red-50/10 p-4 rounded-xl border border-red-100 flex flex-col justify-between relative group">
                         
                         {/* HOVER DETAIL POP */}
                         <div className="absolute z-35 hidden group-hover:block bg-slate-900 text-white text-[9px] p-2.5 rounded shadow-xl -top-16 left-2 w-48 pointer-events-none animate-in fade-in zoom-in-95 duration-100 border border-slate-700">
@@ -1520,7 +1529,7 @@ export default function App() {
 
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-red-655 flex items-center gap-1">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 flex items-center gap-1">
                               <Sparkles className="w-3 h-3 animate-pulse" /> Gemini AI Agent
                             </span>
                             <span className="text-[9px] bg-red-600 text-white px-2 py-0.5 rounded-full font-bold">
@@ -1538,7 +1547,7 @@ export default function App() {
                               }`}>
                                 {aiResult.price_change_percentage >= 0 ? "+" : ""}{aiResult.price_change_percentage}% swing
                               </span>
-                              <p className="text-[11px] text-slate-605 leading-relaxed italic border-t border-red-100/50 pt-2 mt-2">
+                              <p className="text-[11px] text-slate-600 leading-relaxed italic border-t border-red-100/50 pt-2 mt-2">
                                 "{aiResult.rationale}"
                               </p>
                             </div>
@@ -1546,7 +1555,7 @@ export default function App() {
                             <div className="py-4 text-center">
                               {isAiLoading ? (
                                 <div className="flex flex-col items-center gap-1">
-                                  <RefreshCw className="w-6 h-6 text-red-650 animate-spin" />
+                                  <RefreshCw className="w-6 h-6 text-red-600 animate-spin" />
                                   <span className="text-[10px] text-slate-400 font-mono">Consulting Gemini API...</span>
                                 </div>
                               ) : (
@@ -1570,7 +1579,7 @@ export default function App() {
                           {aiResult && (
                             <button
                               onClick={applyAiPrice}
-                              className="bg-red-655 hover:bg-red-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition-colors cursor-pointer flex-1"
+                              className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition-colors cursor-pointer flex-1"
                             >
                               Apply AI Price
                             </button>
@@ -1590,7 +1599,7 @@ export default function App() {
 
                       {/* Agent presets list */}
                       <div className="space-y-2">
-                        <span className="text-[10px] font-mono text-slate-505 font-bold uppercase tracking-wider block">Quick Presets</span>
+                        <span className="text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider block">Quick Presets</span>
                         <div className="grid grid-cols-2 gap-2">
                           {AGENT_PRESETS.map((preset) => {
                             const isActive = agentInstruction === preset.instruction;
@@ -1602,11 +1611,11 @@ export default function App() {
                                 className={`p-2.5 rounded-lg border text-left transition-all cursor-pointer flex flex-col justify-between ${
                                   isActive 
                                     ? 'bg-red-50 border-red-200 text-red-700 font-semibold ring-1 ring-red-500/10' 
-                                    : 'bg-slate-50 border-slate-200 hover:border-slate-350 text-slate-600'
+                                    : 'bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-600'
                                 }`}
                               >
                                 <span className="text-xs font-bold block">{preset.name}</span>
-                                <span className="text-[9px] text-slate-400 leading-snug mt-1 block font-medium truncate-2-lines">{preset.desc}</span>
+                                <span className="text-[9px] text-slate-400 leading-snug mt-1 block font-medium line-clamp-2">{preset.desc}</span>
                               </button>
                             );
                           })}
@@ -1620,7 +1629,7 @@ export default function App() {
                           value={agentInstruction}
                           onChange={(e) => handleInstructionChange(e.target.value)}
                           placeholder="Type your custom system instructions for the pricing agent (e.g. 'Undercut cheapest competitor by 5%, but always ignore shipping costs')"
-                          className="w-full min-h-[140px] bg-white border border-slate-250 rounded-lg p-3 text-xs text-slate-855 font-mono focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 leading-relaxed"
+                          className="w-full min-h-[140px] bg-white border border-slate-200 rounded-lg p-3 text-xs text-slate-800 font-mono focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 leading-relaxed"
                         />
                       </div>
                     </div>
@@ -1628,7 +1637,7 @@ export default function App() {
                     {/* Sync Indicator */}
                     <div className="bg-red-50/20 border border-red-100 p-3 rounded-lg flex items-center gap-2.5 mt-2">
                       <CheckCircle className="w-4 h-4 text-red-600" />
-                      <span className="text-[10px] text-slate-655 font-mono font-medium">Custom instructions will be dynamically injected as Gemini System Instructions.</span>
+                      <span className="text-[10px] text-slate-600 font-mono font-medium">Custom instructions will be dynamically injected as Gemini System Instructions.</span>
                     </div>
                   </div>
                 )}
@@ -1654,7 +1663,7 @@ export default function App() {
           <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm relative group">
             
             {/* HOVER DETAIL POP */}
-            <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-slate-900 text-white text-[9px] px-2 py-1 rounded shadow-lg pointer-events-none transition-opacity -top-3 left-4 border border-slate-750">
+            <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-slate-900 text-white text-[9px] px-2 py-1 rounded shadow-lg pointer-events-none transition-opacity -top-3 left-4 border border-slate-700">
               💡 Optimization tips derived from catalog audits and stock levels.
             </div>
 
@@ -1721,7 +1730,7 @@ export default function App() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
               <div className="flex items-center gap-2">
                 <Bell className="w-5 h-5 text-red-600 animate-bounce" />
-                <h3 className="font-display font-bold text-slate-850 text-base">Alerts Feed</h3>
+                <h3 className="font-display font-bold text-slate-800 text-base">Alerts Feed</h3>
               </div>
               <button
                 onClick={() => setShowNotificationsDrawer(false)}
@@ -1765,7 +1774,7 @@ export default function App() {
                     )}
                     <span className="text-[8px] font-mono text-slate-400 block">{notif.timestamp}</span>
                     <h4 className="text-xs font-bold text-slate-800 mt-1 leading-snug">{notif.title}</h4>
-                    <p className="text-[11px] text-slate-505 mt-1 leading-relaxed">{notif.message}</p>
+                    <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">{notif.message}</p>
                     
                     {notif.productId && (
                       <button

@@ -8,7 +8,8 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 
 // Shared Mock Products Store
 let products = [
@@ -388,7 +389,7 @@ Competitor statistics for your awareness:
 Perform rigorous pricing analysis. Adhere strictly to the Custom User Instructions above as your primary directive. Ensure your recommended price, strategy, driver, and rationale reflect your custom instructions.`;
 
     const response = await client.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: GEMINI_MODEL,
       contents: prompt,
       config: {
         systemInstruction: `${userSystemInstruction} Return responses STRICTLY conforming to the requested JSON schema. Do not include any pre-prose or post-prose.`,

@@ -323,7 +323,7 @@ export default function ProductForm({
       {/* Connection Synced Channels */}
       <div className="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-3">
         <h4 className="text-xs font-mono font-semibold text-slate-500 tracking-wider uppercase">
-          Connect SKU to Connected Channels
+          Sync SKU to Sales Channels
         </h4>
         <div className="flex flex-wrap gap-3">
           {['Shopify', 'WooCommerce', 'eBay', 'Amazon'].map((ch) => {
