@@ -1,3 +1,10 @@
+export interface PriceHistoryPoint {
+  timestamp: string;
+  price: number;
+  engine: "Heuristic" | "Gemini AI" | "Manual";
+  reason?: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -11,6 +18,7 @@ export interface Product {
   competitor_prices: number[];
   imageUrl?: string;
   connectedChannels?: string[]; // e.g. ['shopify', 'amazon']
+  priceHistory?: PriceHistoryPoint[];
 }
 
 export interface PricingAnalysis {

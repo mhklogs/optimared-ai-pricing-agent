@@ -7,7 +7,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const GEMINI_API_KEY = (process.env.GEMINI_API_KEY || "").replace(/^"+|"+$/g, "");
 
 // Shared Mock Products Store
 let products = [
@@ -77,7 +78,7 @@ let aiClient: GoogleGenAI | null = null;
 
 function getAIClient(): GoogleGenAI | null {
   if (!aiClient) {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = GEMINI_API_KEY;
     if (apiKey && apiKey !== "MY_GEMINI_API_KEY") {
       aiClient = new GoogleGenAI({
         apiKey,
@@ -428,6 +429,16 @@ Perform rigorous pricing analysis. Adhere strictly to the Custom User Instructio
     console.error("Gemini pricing agent error:", error);
     res.status(500).json({ error: "Gemini analysis failed: " + error.message });
   }
+});
+
+app.post("/api/contact", (req, res) => {
+  const { name, email, subject, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+  // In production, this would send an email or store in DB
+  console.log("Contact form submission:", { name, email, subject, message });
+  res.json({ success: true, message: "Thank you for your message. We'll get back to you within 24 hours." });
 });
 
 export default app;
