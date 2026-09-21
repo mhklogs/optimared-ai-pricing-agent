@@ -40,7 +40,7 @@ export default function MarginHealthPanel({ products, currencySymbol }: MarginHe
   };
 
   return (
-    <div id="margin-health-panel" className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
+    <div id="margin-health-panel" className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-100 mb-4">
         <h2 className="font-display font-bold text-stone-900 text-base flex items-center gap-2">
           <Activity className="w-4.5 h-4.5 text-blue-600" />
@@ -92,7 +92,7 @@ export default function MarginHealthPanel({ products, currencySymbol }: MarginHe
       )}
 
       {/* Per-SKU list */}
-      <div className="space-y-2.5 max-h-[340px] overflow-y-auto pr-1">
+      <div className="space-y-3 max-h-[360px] overflow-y-auto pr-1">
         {rows.length === 0 ? (
           <p className="text-xs text-stone-400 italic py-6 text-center">
             No SKUs in the catalog yet — launch a product to see margin health.
@@ -105,7 +105,7 @@ export default function MarginHealthPanel({ products, currencySymbol }: MarginHe
             return (
               <div
                 key={product.id}
-                className="p-3 rounded-xl border border-stone-100 bg-stone-50/70 hover:border-stone-200 transition-colors flex flex-col sm:flex-row sm:items-center gap-2.5"
+                className="p-3.5 rounded-xl border border-stone-100 bg-stone-50/70 hover:border-stone-200 transition-colors flex flex-col sm:flex-row sm:items-center gap-3"
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2">

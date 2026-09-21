@@ -178,7 +178,7 @@ export default function PricingVisualizer({
       {/* Comparison Insights Card */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Safety Margins status */}
-        <div className="bg-stone-50 p-3 rounded-2xl border border-stone-100 flex items-start gap-3">
+        <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex items-start gap-3">
           <Shield className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
           <div>
             <span className="text-xs text-stone-500 font-medium block">Price Safety Buffer</span>
@@ -192,7 +192,7 @@ export default function PricingVisualizer({
         </div>
 
         {/* Competitor position status */}
-        <div className="bg-stone-50 p-3 rounded-2xl border border-stone-100 flex items-start gap-3">
+        <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex items-start gap-3">
           <Info className="w-5 h-5 text-stone-600 shrink-0 mt-0.5" />
           <div>
             <span className="text-xs text-stone-500 font-medium block">Competitor Position Overview</span>

@@ -61,7 +61,7 @@ export default function PricingLogs({ logs, onClear, currencySymbol }: PricingLo
         )}
       </div>
 
-      <div className="flex-1 overflow-y-auto max-h-[380px] space-y-3 pr-1">
+      <div className="flex-1 overflow-y-auto max-h-[420px] space-y-3.5 pr-1">
         {logs.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-stone-400 text-center space-y-2">
             <RefreshCw className="w-8 h-8 text-stone-300 animate-spin-slow" />
@@ -78,7 +78,7 @@ export default function PricingLogs({ logs, onClear, currencySymbol }: PricingLo
             return (
               <div
                 key={index}
-                className="bg-stone-50 p-3.5 rounded-2xl border border-stone-100 flex flex-col gap-2 hover:border-stone-200 transition-colors"
+                className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex flex-col gap-2 hover:border-stone-200 transition-colors"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>

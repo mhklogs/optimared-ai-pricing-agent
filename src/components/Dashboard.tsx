@@ -1193,13 +1193,13 @@ export default function Dashboard() {
       )}
 
       {/* Main Grid Workspace */}
-      <main className="flex-1 p-6 grid grid-cols-1 xl:grid-cols-12 gap-6 max-w-[1700px] mx-auto w-full">
+      <main className="flex-1 p-6 lg:p-8 grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-7 max-w-[1440px] mx-auto w-full">
         
         {/* Left Side: Storefronts & SKU catalog (xl:4) */}
         <section className="xl:col-span-4 flex flex-col gap-6">
           
           {/* Store connection controller */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm space-y-4">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-stone-100">
               <h2 className="font-display font-bold text-stone-900 text-base flex items-center gap-2">
                 <Link2 className="w-4.5 h-4.5 text-blue-600" />
@@ -1208,7 +1208,7 @@ export default function Dashboard() {
               <span className="text-xs font-medium text-stone-400">1-Click Auth</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3.5">
+            <div className="grid grid-cols-2 gap-4">
               {channels.map((chan) => (
                 <div 
                   key={chan.id} 
@@ -1271,7 +1271,7 @@ export default function Dashboard() {
           <MarginHealthPanel products={products} currencySymbol={currencySymbol} />
 
           {/* Listings Ledger */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col flex-1 min-h-[500px]">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm flex flex-col flex-1 min-h-[500px]">
             
             <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-stone-100 mb-4">
               <div>
@@ -1374,7 +1374,7 @@ export default function Dashboard() {
             </div>
 
             {/* Metric counters */}
-            <div className="grid grid-cols-2 gap-3.5 mb-5">
+            <div className="grid grid-cols-2 gap-4 mb-5">
               <div className="bg-stone-50 border border-stone-100 p-4 rounded-xl">
                 <span className="text-xs text-stone-400 block font-medium">Avg catalog margin</span>
                 <div className="flex items-center justify-between mt-1.5">
@@ -1517,7 +1517,7 @@ export default function Dashboard() {
         <section className="xl:col-span-5 flex flex-col gap-6">
 
           {/* Market Sentiment Fluctuation Timeline (The requested visual graph showing ups/downs) */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm relative group">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm relative group">
             
             {/* HOVER TOOLTIP HELP BAR */}
             <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-white text-stone-400 text-xs px-2.5 py-1 rounded-lg shadow-md pointer-events-none transition-opacity -top-3 left-4 border border-stone-200">
@@ -1631,7 +1631,7 @@ export default function Dashboard() {
             </div>
 
             {/* Live Pricing Agent Crawling activities ticker feed (Pricing Agent look) */}
-            <div className="mt-3 bg-stone-100 border border-stone-200 rounded-xl p-3 font-mono text-xs text-stone-500 h-24 overflow-hidden relative">
+            <div className="mt-3 bg-stone-100 border border-stone-200 rounded-xl p-4 font-mono text-xs text-stone-500 h-32 overflow-hidden relative">
               <div className="absolute top-2 right-2.5 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-lg text-[10px] uppercase tracking-wider text-emerald-700 font-bold flex items-center gap-1.5">
                 <span className="w-2 h-2 bg-emerald-500 rounded-full" /> Live Monitor
               </div>
@@ -1647,7 +1647,7 @@ export default function Dashboard() {
           </div>
 
           {/* Interactive Pricing Engine Panel */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex-1 flex flex-col">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm flex-1 flex flex-col">
             {isFormOpen ? (
               <ProductForm
                 product={editingProduct}
@@ -1701,7 +1701,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Spec details bar */}
-                    <div className="grid grid-cols-3 gap-4 bg-stone-50 border border-stone-100 p-4 rounded-xl text-center">
+                    <div className="grid grid-cols-3 gap-4 bg-stone-50 border border-stone-100 p-5 rounded-xl text-center">
                       <div>
                         <span className="text-xs text-stone-400 block">Unit Cost (COGS)</span>
                         <span className="text-lg font-display font-bold text-stone-900 mt-1 block">{currencySymbol}{convertPrice(activeProduct.cogs).toFixed(2)}</span>
@@ -1915,7 +1915,7 @@ export default function Dashboard() {
         <section className="xl:col-span-3 flex flex-col gap-6">
 
           {/* AI Strategy Suggestions panel */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm relative group">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm relative group">
             
             {/* HOVER DETAIL POP */}
             <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-white text-stone-400 text-xs px-2.5 py-1 rounded-lg shadow-md pointer-events-none transition-opacity -top-3 left-4 border border-stone-200">
@@ -1930,12 +1930,12 @@ export default function Dashboard() {
               <span className="text-[10px] bg-blue-50 text-blue-700 px-2 py-1 rounded-lg font-bold">{suggestions.length} Alerts</span>
             </div>
 
-            <div className="space-y-3 max-h-[260px] overflow-y-auto pr-1">
+            <div className="space-y-3.5 max-h-[300px] overflow-y-auto pr-1">
               {suggestions.length === 0 ? (
                 <p className="text-xs text-stone-400 italic py-4 text-center">Store listings are completely optimized.</p>
               ) : (
                 suggestions.map((sug) => (
-                  <div key={sug.id} className="bg-stone-50 border border-stone-100 p-3.5 rounded-xl space-y-1.5 hover:border-stone-200 transition-colors">
+                  <div key={sug.id} className="bg-stone-50 border border-stone-100 p-4 rounded-xl space-y-1.5 hover:border-stone-200 transition-colors">
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">{sug.category}</span>
                       <span className="text-[10px] font-mono text-stone-400">{sug.productId}</span>
