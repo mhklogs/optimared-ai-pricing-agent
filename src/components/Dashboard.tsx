@@ -1188,10 +1188,9 @@ export default function Dashboard() {
       )}
 
       {/* Main Grid Workspace */}
-      <main className="flex-1 p-6 lg:p-8 grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-7 max-w-[1440px] mx-auto w-full">
-        
-        {/* Left Side: Storefronts & SKU catalog (xl:4) */}
-        <section className="xl:col-span-4 flex flex-col gap-6">
+      <main className="flex-1 px-5 sm:px-8 py-8 mx-auto w-full max-w-[1400px] space-y-7">
+
+        {/* Connected storefronts */}
           
           {/* Store connection controller */}
           <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm">
@@ -1259,7 +1258,7 @@ export default function Dashboard() {
           <MarginHealthPanel products={products} currencySymbol={currencySymbol} />
 
           {/* Listings Ledger */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm flex flex-col flex-1 min-h-[500px]">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm">
             
             <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-stone-100 mb-4">
               <div>
@@ -1379,7 +1378,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto space-y-3 pr-1 max-h-[500px]">
+            <div className="space-y-3 pr-1">
               {products.length === 0 ? (
                 <div className="text-center py-16 text-stone-400 border border-dashed border-stone-200 rounded-2xl bg-stone-50/50">
                   <Briefcase className="w-9 h-9 mx-auto text-stone-300 mb-2" />
@@ -1433,20 +1432,11 @@ export default function Dashboard() {
                       </div>
 
                       {/* Display Channel Icons */}
-                      <div className="flex items-center justify-between border-t border-stone-100 pt-2.5 mt-0.5">
-                        <div className="flex gap-1.5">
-                          {p.connectedChannels?.map((ch) => (
-                            <span 
-                              key={ch} 
-                              className="text-[10px] font-bold uppercase px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-600 rounded-md"
-                              title={`Synced to ${ch}`}
-                            >
-                              {ch[0]}
-                            </span>
-                          ))}
-                          {(!p.connectedChannels || p.connectedChannels.length === 0) && (
-                            <span className="text-[10px] text-stone-400 italic">No storefront link</span>
-                          )}
+                      <div className="flex items-center justify-between border-t border-stone-100 pt-3 mt-1">
+                        <div className="text-[13px] text-stone-400 truncate">
+                          {p.connectedChannels && p.connectedChannels.length > 0
+                            ? `Syncs to ${p.connectedChannels.join(", ")}`
+                            : "No storefront link"}
                         </div>
 
                         <div className="flex items-center gap-1.5">
@@ -1499,10 +1489,8 @@ export default function Dashboard() {
             </div>
 
           </div>
-        </section>
 
-        {/* Center: Analytics, SVG Charts, Dynamic Analysis panels (xl:5) */}
-        <section className="xl:col-span-5 flex flex-col gap-6">
+        {/* Market & SKU workspace */}
 
           {/* Market Sentiment Fluctuation Timeline (The requested visual graph showing ups/downs) */}
           <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm relative group">
@@ -1897,10 +1885,7 @@ export default function Dashboard() {
             )}
           </div>
 
-        </section>
-
-        {/* Right Side: Logs ledger & Strategy alerts feed (xl:3) */}
-        <section className="xl:col-span-3 flex flex-col gap-6">
+        {/* Insights & ledger */}
 
           {/* AI Strategy Suggestions panel */}
           <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm relative group">
@@ -1961,8 +1946,6 @@ export default function Dashboard() {
               currencySymbol={currencySymbol}
             />
           </div>
-
-        </section>
 
       </main>
 
