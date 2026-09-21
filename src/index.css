@@ -160,20 +160,17 @@ code {
 }
 
 /* ---------- eyebrows ---------- */
-.eyebrow {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.24em;
+.eyebrow,
+.eyebrow-amber {
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
   color: var(--muted);
 }
 .eyebrow-amber {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.24em;
   color: var(--accent);
-  font-weight: 600;
 }
 
 /* ---------- background scaffolds ---------- */
@@ -317,6 +314,38 @@ code {
 }
 .animate-pulse-red {
   animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* =====================================================================
+   Product workspace (Dashboard) legibility.
+   Lift the whole dashboard's text scale — the workspace leans on tiny
+   stock Tailwind sizes that read as AI-generated template chrome. One
+   scoped block keeps the marketing site untouched.
+   ===================================================================== */
+.optimared-app {
+  font-size: 16.5px;
+}
+.optimared-app .text-\[10px\] {
+  font-size: 0.8125rem;
+}
+.optimared-app .text-xs {
+  font-size: 0.875rem;
+}
+.optimared-app .text-sm {
+  font-size: 0.9375rem;
+}
+.optimared-app .text-base {
+  font-size: 1.0625rem;
+}
+.optimared-app .text-lg {
+  font-size: 1.2rem;
+}
+.optimared-app .text-xl {
+  font-size: 1.35rem;
+}
+.optimared-app .font-mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

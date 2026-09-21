@@ -1064,15 +1064,10 @@ export default function Dashboard() {
             O
           </div>
           <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="font-display font-bold text-lg text-stone-900 tracking-tight">Optimared</h1>
-              <span className="bg-blue-50 text-blue-700 text-xs uppercase font-bold tracking-widest px-2.5 py-1 rounded-full border border-blue-200/60">
-                AI Co-Pilot
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 mt-1">
+            <div className="flex items-center gap-3">
+              <h1 className="font-display font-bold text-xl text-stone-900 tracking-tight">Optimared</h1>
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span className="text-xs text-stone-400">Agent monitoring connected channels</span>
+              <span className="text-sm text-stone-500">Pricing workspace</span>
             </div>
           </div>
         </div>
@@ -1199,68 +1194,61 @@ export default function Dashboard() {
         <section className="xl:col-span-4 flex flex-col gap-6">
           
           {/* Store connection controller */}
-          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100">
-              <h2 className="font-display font-bold text-stone-900 text-base flex items-center gap-2">
-                <Link2 className="w-4.5 h-4.5 text-blue-600" />
-                Connected Integrations
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm">
+            <div className="flex items-center justify-center pb-4 border-b border-stone-100">
+              <h2 className="font-display font-bold text-stone-900 text-lg flex items-center gap-2.5">
+                <Link2 className="w-5 h-5 text-blue-600" />
+                Connected storefronts
               </h2>
-              <span className="text-xs font-medium text-stone-400">1-Click Auth</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="divide-y divide-stone-100">
               {channels.map((chan) => (
-                <div 
-                  key={chan.id} 
-                  className={`p-4 rounded-xl border transition-all flex flex-col justify-between ${
-                    chan.connected 
-                      ? 'bg-blue-50/40 border-blue-200 hover:border-blue-300' 
-                      : 'bg-stone-50 border-stone-100 opacity-60 hover:opacity-100'
-                  }`}
+                <div
+                  key={chan.id}
+                  className="flex items-center justify-between gap-4 py-5"
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`w-9 h-9 rounded-lg flex items-center justify-center font-display font-black text-base ${
-                      chan.connected ? 'bg-blue-600 text-white' : 'bg-stone-200 text-stone-500'
-                    }`}>
+                  <div className="flex items-center gap-4 min-w-0">
+                    <span className="w-11 h-11 rounded-xl bg-stone-100 flex items-center justify-center font-display font-semibold text-stone-600 text-lg shrink-0">
                       {chan.icon}
                     </span>
-                    <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
-                      chan.connected ? 'bg-emerald-100 text-emerald-700' : 'bg-stone-200 text-stone-500'
-                    }`}>
-                      {chan.connected ? 'Connected' : 'Offline'}
-                    </span>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <h3 className="text-base font-semibold text-stone-900">{chan.name}</h3>
+                        <span className={chan.connected ? "text-sm font-medium text-emerald-600" : "text-sm font-medium text-stone-400"}>
+                          {chan.connected ? "Connected" : "Offline"}
+                        </span>
+                      </div>
+                      {chan.connected ? (
+                        <p className="text-sm text-stone-400 mt-1">
+                          {chan.itemCount} items synced · {chan.lastSynced}
+                        </p>
+                      ) : (
+                        <p className="text-sm text-stone-400 mt-1">Nothing connected yet</p>
+                      )}
+                    </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-sm font-bold text-stone-800">{chan.name}</h3>
-                    {chan.connected && (
-                      <span className="text-xs text-stone-400 block mt-0.5">
-                        {chan.itemCount} items synced • {chan.lastSynced}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex gap-2 mt-4">
-                    <button
-                      onClick={() => toggleChannelConnection(chan.id)}
-                      className={`text-xs font-semibold px-2.5 py-1.5 rounded-xl transition-colors flex-1 cursor-pointer ${
-                        chan.connected 
-                          ? 'bg-stone-100 hover:bg-stone-200 text-stone-700' 
-                          : 'bg-blue-600 hover:bg-blue-700 text-white'
-                      }`}
-                    >
-                      {chan.connected ? "Disconnect" : "Connect"}
-                    </button>
+                  <div className="flex items-center gap-3 shrink-0">
                     {chan.connected && (
                       <button
                         onClick={() => syncChannelNow(chan.id)}
                         disabled={chan.syncing}
-                        className="p-1.5 bg-white hover:bg-stone-100 border border-stone-200 rounded-lg text-stone-500 hover:text-stone-900 transition-colors disabled:opacity-50 cursor-pointer"
+                        className="w-9 h-9 flex items-center justify-center rounded-lg border border-stone-200 text-stone-500 hover:text-stone-900 hover:border-stone-300 transition-colors disabled:opacity-50 cursor-pointer"
                         title="Sync catalog values"
                       >
                         <RefreshCw className={`w-4 h-4 ${chan.syncing ? 'animate-spin' : ''}`} />
                       </button>
                     )}
+                    <button
+                      onClick={() => toggleChannelConnection(chan.id)}
+                      className={chan.connected
+                        ? "text-sm font-semibold px-4 py-2 rounded-lg border border-stone-200 bg-white hover:bg-stone-50 text-stone-600 transition-colors cursor-pointer"
+                        : "text-sm font-semibold px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors cursor-pointer"
+                      }
+                    >
+                      {chan.connected ? "Disconnect" : "Connect"}
+                    </button>
                   </div>
                 </div>
               ))}

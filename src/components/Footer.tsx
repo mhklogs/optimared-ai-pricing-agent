@@ -27,9 +27,9 @@ export default function Footer() {
               velocity. Heuristic rules keep you above your floor; the AI agent
               adds market judgment.
             </p>
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
-              <span className="pulse-dot h-2 w-2 rounded-full bg-amber" />
-              Runs on your catalog
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-soft">
+              Margin-first dynamic pricing: a rule engine for discipline, an AI
+              agent for judgment, and a floor under every SKU.
             </p>
           </div>
 
@@ -68,10 +68,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 md:flex-row md:items-center">
-          <p className="text-xs text-muted">&copy; 2026 Optimared. All rights reserved.</p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-            Margin-first pricing · no credit card to start
-          </p>
+          <p className="text-sm text-muted">&copy; 2026 Optimared. All rights reserved.</p>
         </div>
       </div>
     </footer>

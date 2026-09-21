@@ -141,11 +141,9 @@ export default function HomePage() {
 
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-16 text-center md:pt-24">
           <RevealGroup>
-            <div className="inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5">
-              <span className="pulse-dot flex h-2 w-2 rounded-full bg-amber" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-soft">
-                AI dynamic pricing agent · margin-first
-              </span>
+<div className="inline-flex items-center gap-2.5 rounded-full glass px-4 py-2">
+              <span className="h-2 w-2 rounded-full bg-amber" />
+              <span className="text-sm text-ink-soft">Dynamic pricing for e-commerce, margin-first</span>
             </div>
           </RevealGroup>
 
@@ -176,18 +174,18 @@ export default function HomePage() {
                 See it run live
               </a>
             </div>
-            <p className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+            <p className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
               <span className="inline-flex items-center gap-1.5">
-                <CircleCheck className="h-3.5 w-3.5 text-mint" />
-                one free trial · real work
+                <CircleCheck className="h-4 w-4 text-mint" />
+                One free trial on real work
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <CircleCheck className="h-3.5 w-3.5 text-mint" />
-                no credit card
+                <CircleCheck className="h-4 w-4 text-mint" />
+                No credit card
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <CircleCheck className="h-3.5 w-3.5 text-mint" />
-                your catalog, your guardrails
+                <CircleCheck className="h-4 w-4 text-mint" />
+                Your catalog, your guardrails
               </span>
             </p>
           </RevealGroup>
@@ -197,9 +195,7 @@ export default function HomePage() {
               {stats.map((s) => (
                 <div key={s.label} className="text-center">
                   <p className="font-display text-3xl leading-none md:text-4xl">{s.value}</p>
-                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted md:text-[11px]">
-                    {s.label}
-                  </p>
+                  <p className="mt-2 text-sm text-muted">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -231,7 +227,7 @@ export default function HomePage() {
                 {["CSV upload", "Heuristic + AI", "8 currencies", "4 storefronts"].map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-soft"
+                    className="rounded-full border border-line bg-surface px-4 py-1.5 text-sm text-ink-soft"
                   >
                     {t}
                   </span>
@@ -244,7 +240,7 @@ export default function HomePage() {
             <div className="accent-edge panel overflow-hidden">
               <Dashboard />
             </div>
-            <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+            <p className="mt-4 text-center text-sm text-muted">
               Run it now — prices recompute as competitor numbers shift in real time
             </p>
           </RevealGroup>

@@ -66,16 +66,7 @@ export default function OptimaredLogo({
       <span className="logo-tile flex h-10 w-10 shrink-0 items-center justify-center">
         <OptimaredMark size={markSize - 10} />
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-[17px] font-bold uppercase tracking-[0.08em] text-ink">
-          Optimared
-        </span>
-        {tagline && (
-          <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.3em] text-amber">
-            AI pricing agent
-          </span>
-        )}
-      </span>
+      <span className="font-display text-[22px] leading-none text-ink">Optimared</span>
     </span>
   );
 }

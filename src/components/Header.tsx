@@ -18,13 +18,8 @@ export default function Header() {
     <header className="glass-strong sticky top-0 z-50 px-6 py-3">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="Optimared home">
-          <OptimaredMark size={38} />
-          <span className="leading-none">
-            <span className="block font-display text-[18px] text-ink">Optimared</span>
-            <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.28em] text-amber">
-              AI pricing agent
-            </span>
-          </span>
+          <OptimaredMark size={36} />
+          <span className="block font-display text-[22px] leading-none text-ink">Optimared</span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">

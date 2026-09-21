@@ -1,6 +1,6 @@
 import React from "react";
 import { Product } from "../types";
-import { Activity, Download, Printer, TriangleAlert } from "lucide-react";
+import { Download, Printer, TriangleAlert } from "lucide-react";
 import { getMargin, getMarginHealth, buildCatalogReportCsv } from "../lib/margin";
 import { downloadCsv } from "../lib/csv";
 
@@ -9,10 +9,10 @@ interface MarginHealthPanelProps {
   currencySymbol: string;
 }
 
-const HEALTH_BADGE: Record<string, string> = {
-  healthy: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  watch: "bg-amber-50 text-amber-700 border-amber-200",
-  risk: "bg-rose-50 text-rose-700 border-rose-200",
+const HEALTH_TEXT: Record<string, string> = {
+  healthy: "text-emerald-600",
+  watch: "text-amber-600",
+  risk: "text-rose-600",
 };
 
 const HEALTH_LABEL: Record<string, string> = {
@@ -41,60 +41,59 @@ export default function MarginHealthPanel({ products, currencySymbol }: MarginHe
 
   return (
     <div id="margin-health-panel" className="bg-white border border-stone-200 rounded-2xl p-6 lg:p-7 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-100 mb-4">
-        <h2 className="font-display font-bold text-stone-900 text-base flex items-center gap-2">
-          <Activity className="w-4.5 h-4.5 text-blue-600" />
-          Margin Health & Reports
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-stone-100">
+        <h2 className="font-display font-bold text-stone-900 text-lg">
+          Margin health
         </h2>
         <div className="flex items-center gap-2">
           <button
             onClick={handleDownload}
             disabled={products.length === 0}
-            className="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 transition-colors flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+            className="text-sm font-semibold px-3.5 py-2 rounded-lg border border-stone-200 bg-white hover:bg-stone-50 text-stone-600 transition-colors flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
             title="Download margin report as CSV"
           >
-            <Download className="w-3.5 h-3.5" /> Report
+            <Download className="w-4 h-4" /> Report
           </button>
           <button
             onClick={() => window.print()}
             disabled={products.length === 0}
-            className="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+            className="text-sm font-semibold px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
             title="Print margin health report"
           >
-            <Printer className="w-3.5 h-3.5" /> Print
+            <Printer className="w-4 h-4" /> Print
           </button>
         </div>
       </div>
 
       {/* Catalog-level summary */}
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="bg-stone-50 border border-stone-100 p-3 rounded-xl text-center">
-          <span className="text-xs text-stone-400 block font-medium">Avg margin</span>
-          <span className="text-lg font-display font-bold text-stone-900 block mt-1">{avgMargin.toFixed(1)}%</span>
+      <div className="grid grid-cols-3 divide-x divide-stone-100 border-b border-stone-100 py-5">
+        <div className="px-4 text-center">
+          <p className="text-base font-medium text-stone-900">{avgMargin.toFixed(1)}%</p>
+          <p className="text-sm text-stone-400 mt-1">Average margin</p>
         </div>
-        <div className="bg-emerald-50/60 border border-emerald-100 p-3 rounded-xl text-center">
-          <span className="text-xs text-emerald-600 block font-medium">Healthy</span>
-          <span className="text-lg font-display font-bold text-emerald-700 block mt-1">{healthyCount}</span>
+        <div className="px-4 text-center">
+          <p className="text-base font-medium text-emerald-700">{healthyCount}</p>
+          <p className="text-sm text-stone-400 mt-1">Healthy</p>
         </div>
-        <div className="bg-rose-50/60 border border-rose-100 p-3 rounded-xl text-center">
-          <span className="text-xs text-rose-600 block font-medium">At risk</span>
-          <span className="text-lg font-display font-bold text-rose-700 block mt-1">{riskCount}</span>
+        <div className="px-4 text-center">
+          <p className="text-base font-medium text-rose-700">{riskCount}</p>
+          <p className="text-sm text-stone-400 mt-1">At risk</p>
         </div>
       </div>
 
       {watchCount > 0 && (
-        <div className="flex items-center gap-2 bg-amber-50/60 border border-amber-100 text-amber-700 text-xs px-3 py-2 rounded-xl mb-4">
-          <TriangleAlert className="w-4 h-4 shrink-0" />
+        <div className="flex items-center gap-3 bg-amber-50/60 border border-amber-100 text-amber-800 text-sm px-4 py-3 rounded-xl mt-5">
+          <TriangleAlert className="w-5 h-5 shrink-0" />
           <span className="font-medium">
-            {watchCount} SKU(s) are within 5pts of their target margin — monitor closely.
+            {watchCount} SKU{watchCount === 1 ? " is" : "s are"} within 5 points of the target margin — worth a look.
           </span>
         </div>
       )}
 
       {/* Per-SKU list */}
-      <div className="space-y-3 max-h-[360px] overflow-y-auto pr-1">
+      <div className="space-y-3.5 max-h-[380px] overflow-y-auto pr-1 mt-5">
         {rows.length === 0 ? (
-          <p className="text-xs text-stone-400 italic py-6 text-center">
+          <p className="text-sm text-stone-400 italic py-8 text-center">
             No SKUs in the catalog yet — launch a product to see margin health.
           </p>
         ) : (
@@ -105,24 +104,22 @@ export default function MarginHealthPanel({ products, currencySymbol }: MarginHe
             return (
               <div
                 key={product.id}
-                className="p-3.5 rounded-xl border border-stone-100 bg-stone-50/70 hover:border-stone-200 transition-colors flex flex-col sm:flex-row sm:items-center gap-3"
+                className="p-4 rounded-xl border border-stone-100 bg-stone-50/60 hover:border-stone-200 transition-colors"
               >
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="text-sm font-bold text-stone-900 truncate">{product.name}</h4>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shrink-0 ${HEALTH_BADGE[health]}`}>
-                      {HEALTH_LABEL[health]}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 mt-0.5">
-                    <span className="font-mono text-[10px] text-stone-400 truncate">{product.id}</span>
-                    <span className="font-mono text-[10px] text-stone-500 shrink-0">
-                      {currencySymbol}{product.current_price.toFixed(2)} · {margin.toFixed(1)}% vs {product.target_margin}%
-                    </span>
-                  </div>
-                  <div className="h-1.5 rounded-full bg-stone-200 mt-1.5 overflow-hidden">
-                    <div className={`h-full rounded-full ${barColor}`} style={{ width: `${targetPct}%` }} />
-                  </div>
+                <div className="flex items-center justify-between gap-3">
+                  <h4 className="text-base font-semibold text-stone-900 truncate">{product.name}</h4>
+                  <span className={`text-sm font-medium shrink-0 ${HEALTH_TEXT[health]}`}>
+                    {HEALTH_LABEL[health]}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-3 mt-1.5">
+                  <span className="text-sm text-stone-400 truncate">{product.id}</span>
+                  <span className="text-sm text-stone-600 shrink-0">
+                    {currencySymbol}{product.current_price.toFixed(2)} · {margin.toFixed(1)}% vs target {product.target_margin}%
+                  </span>
+                </div>
+                <div className="h-2 rounded-full bg-stone-200 mt-3 overflow-hidden">
+                  <div className={`h-full rounded-full ${barColor}`} style={{ width: `${targetPct}%` }} />
                 </div>
               </div>
             );
