@@ -86,7 +86,7 @@ export default function ContactPage() {
         </div>
         <div className="relative px-6 py-20 text-center md:py-24">
           <p className="eyebrow-amber">human on the other end</p>
-          <h1 className="mt-4 font-display text-4xl uppercase tracking-tight md:text-5xl">
+          <h1 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
             Get in touch
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-ink-soft">

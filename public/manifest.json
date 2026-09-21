@@ -3,8 +3,8 @@
   "short_name": "Optimared",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#05060b",
-  "theme_color": "#ffc53d",
+  "background_color": "#f7f5f1",
+  "theme_color": "#f7f5f1",
   "description": "AI dynamic pricing agent for e-commerce margins. Rule-engine discipline, Gemini AI judgment, and a safety floor that never prices below COGS + 5%.",
   "orientation": "any",
   "icons": [

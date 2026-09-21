@@ -124,7 +124,7 @@ export default function FeaturesPage() {
         </div>
         <div className="relative px-6 py-20 text-center md:py-28">
           <p className="eyebrow-amber">feature overview</p>
-          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl uppercase tracking-tight md:text-6xl">
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl leading-tight md:text-6xl">
             Built for <span className="text-amber">pricing operators</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">
@@ -177,7 +177,7 @@ export default function FeaturesPage() {
         <div className="mx-auto max-w-6xl px-5 md:px-6">
           <RevealGroup>
             <p className="eyebrow-amber text-center">more to love</p>
-            <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+            <h2 className="mt-2 text-center font-display text-3xl leading-tight md:text-4xl">
               The details matter
             </h2>
           </RevealGroup>
@@ -205,7 +205,7 @@ export default function FeaturesPage() {
         <RevealGroup>
           <div className="accent-edge panel mx-auto max-w-4xl p-8 text-center md:p-12">
             <p className="eyebrow-amber">see it on your catalog</p>
-            <h2 className="mx-auto mt-3 max-w-2xl font-display text-3xl uppercase tracking-tight md:text-5xl">
+            <h2 className="mx-auto mt-3 max-w-2xl font-display text-3xl leading-tight md:text-5xl">
               Open the workspace and run it on real SKUs
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink-soft md:text-base">

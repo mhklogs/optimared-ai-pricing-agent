@@ -64,7 +64,7 @@ export default function AboutPage() {
         </div>
         <div className="relative px-6 py-20 text-center md:py-28">
           <p className="eyebrow-amber">why optimared</p>
-          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl uppercase tracking-tight md:text-6xl">
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl leading-tight md:text-6xl">
             Pricing by hand is{" "}
             <span className="text-amber">how margin leaks</span>
           </h1>
@@ -82,7 +82,7 @@ export default function AboutPage() {
             <span className="logo-tile mx-auto flex h-12 w-12 items-center justify-center">
               <Target className="h-6 w-6 text-amber" />
             </span>
-            <h2 className="mx-auto mt-6 max-w-2xl font-display text-2xl uppercase tracking-tight md:text-3xl">
+            <h2 className="mx-auto mt-6 max-w-2xl font-display text-2xl leading-tight md:text-3xl">
               Dynamic pricing for teams that ship, not just enterprises with consultants
             </h2>
             <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-ink-soft">
@@ -100,7 +100,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-5 md:px-6">
           <RevealGroup>
             <p className="eyebrow-amber text-center">the team</p>
-            <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+            <h2 className="mt-2 text-center font-display text-3xl leading-tight md:text-4xl">
               Small team, sharp focus
             </h2>
           </RevealGroup>
@@ -129,7 +129,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
         <RevealGroup>
           <p className="eyebrow-amber text-center">what we value</p>
-          <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+          <h2 className="mt-2 text-center font-display text-3xl leading-tight md:text-4xl">
             The walls we refuse to cut
           </h2>
         </RevealGroup>
@@ -155,7 +155,7 @@ export default function AboutPage() {
       <section className="px-5 pb-20 md:px-6">
         <RevealGroup>
           <div className="accent-edge panel mx-auto max-w-4xl p-8 text-center md:p-12">
-            <h2 className="mx-auto font-display text-2xl uppercase tracking-tight md:text-4xl">
+            <h2 className="mx-auto font-display text-2xl leading-tight md:text-4xl">
               Want to talk pricing?
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">

@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             <ShieldCheck className="h-3.5 w-3.5" />
             Privacy Policy
           </span>
-          <h1 className="mt-6 font-display text-4xl uppercase tracking-tight md:text-5xl">
+          <h1 className="mt-6 font-display text-4xl leading-tight md:text-5xl">
             Your data, your pricing
           </h1>
           <p className="mt-4 text-lg text-ink-soft">

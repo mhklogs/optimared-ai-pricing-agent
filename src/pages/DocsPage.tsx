@@ -5,7 +5,7 @@ import usePageMeta from "../lib/usePageMeta";
 
 function CodeBlock({ code }: { code: string }) {
   return (
-    <pre className="overflow-x-auto rounded-xl border border-line bg-void p-5 font-mono text-xs leading-relaxed text-ink-soft md:text-sm">
+    <pre className="overflow-x-auto rounded-xl border border-line bg-paper p-5 font-mono text-xs leading-relaxed text-ink-soft md:text-sm">
       {code}
     </pre>
   );
@@ -56,7 +56,7 @@ export default function DocsPage() {
             <Terminal className="h-3.5 w-3.5" />
             Documentation
           </span>
-          <h1 className="mt-6 font-display text-4xl uppercase tracking-tight md:text-5xl">
+          <h1 className="mt-6 font-display text-4xl leading-tight md:text-5xl">
             How it works
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-soft">

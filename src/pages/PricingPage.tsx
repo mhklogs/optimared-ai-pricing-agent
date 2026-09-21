@@ -95,7 +95,7 @@ export default function PricingPage() {
         </div>
         <div className="relative px-6 py-20 text-center md:py-28">
           <p className="eyebrow-amber">one free trial · real work</p>
-          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl uppercase tracking-tight md:text-6xl">
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl leading-tight md:text-6xl">
             Start free. Upgrade when{" "}
             <span className="text-glow-amber text-amber">the margin shows up.</span>
           </h1>
@@ -143,7 +143,7 @@ export default function PricingPage() {
               <div
                 className={
                   t.highlight
-                    ? "relative flex h-full flex-col rounded-2xl border border-amber/60 bg-panel p-7 neon-ring"
+                    ? "relative flex h-full flex-col rounded-2xl border border-amber/50 bg-surface p-7"
                     : "relative flex h-full flex-col rounded-2xl border border-line bg-panel p-7"
                 }
               >
@@ -237,7 +237,7 @@ export default function PricingPage() {
       <section className="mx-auto max-w-3xl px-5 pb-20 md:px-6">
         <RevealGroup>
           <p className="eyebrow-amber text-center">before you pay</p>
-          <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+          <h2 className="mt-2 text-center font-display text-3xl leading-tight md:text-4xl">
             Billing questions
           </h2>
         </RevealGroup>

@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
     <linearGradient id="o-amber" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffc53d"/>
-      <stop offset="1" stop-color="#f0b32d"/>
+      <stop offset="0" stop-color="#d97706"/>
+      <stop offset="1" stop-color="#b45309"/>
     </linearGradient>
     <linearGradient id="o-tile" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#131927"/>
-      <stop offset="1" stop-color="#0d111c"/>
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7f5f1"/>
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#o-tile)" stroke="rgba(140,160,200,0.16)"/>
+  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#o-tile)" stroke="rgba(28,25,23,0.12)"/>
   <path d="M25 50 L32 20" stroke="url(#o-amber)" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <circle cx="25" cy="50" r="2.6" fill="#ffc53d"/>
-  <rect x="24.5" y="24" width="17" height="25" rx="4.5" fill="#0a0d15" stroke="url(#o-amber)" stroke-width="2"/>
-  <path d="M28.5 24.5 V34 h3.5 v-9.5 Z" fill="#ffc53d" opacity="0.9"/>
-  <path d="M22 45 L30 40 L36 43 L44 37" stroke="#ffc53d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M44 37 l-4.2 -1.2 l1 4.4 Z" fill="#ffc53d"/>
-  <circle cx="30" cy="40" r="2.1" fill="#ffc53d"/>
+  <circle cx="25" cy="50" r="2.6" fill="#d97706"/>
+  <rect x="24.5" y="24" width="17" height="25" rx="4.5" fill="#1c1917" stroke="url(#o-amber)" stroke-width="2"/>
+  <path d="M28.5 24.5 V34 h3.5 v-9.5 Z" fill="#d97706" opacity="0.9"/>
+  <path d="M22 45 L30 40 L36 43 L44 37" stroke="#d97706" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M44 37 l-4.2 -1.2 l1 4.4 Z" fill="#d97706"/>
+  <circle cx="30" cy="40" r="2.1" fill="#d97706"/>
 </svg>

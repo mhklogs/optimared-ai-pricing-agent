@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  ChevronDown,
   CircleCheck,
   Upload,
   LineChart,
@@ -13,7 +12,6 @@ import {
   Globe,
   Layers,
   GitBranch,
-  Sparkles,
 } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
@@ -137,29 +135,25 @@ export default function HomePage() {
       {/* ===================== HERO ===================== */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 hud-grid" />
-          <div className="aurora -top-32 left-1/4 h-80 w-80 bg-[#FFC53D]/15" />
-          <div className="aurora right-[6%] top-16 h-72 w-72 bg-[#4EF2BA]/8" />
-          <div className="absolute -bottom-16 left-1/2 h-64 w-[130%] -translate-x-1/2 rounded-[100%] bg-[#FFC53D]/8 blur-3xl" />
+          <div className="aurora -top-40 left-1/4 h-96 w-96 bg-[#D97706]/15" />
+          <div className="aurora right-[6%] top-16 h-80 w-80 bg-[#059669]/8" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-16 text-center md:pt-24">
           <RevealGroup>
             <div className="inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5">
               <span className="pulse-dot flex h-2 w-2 rounded-full bg-amber" />
-              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-ink-soft">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-soft">
                 AI dynamic pricing agent · margin-first
               </span>
             </div>
           </RevealGroup>
 
           <RevealGroup>
-            <h1 className="mx-auto mt-9 max-w-4xl font-display text-4xl uppercase leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-              Prices up.
+            <h1 className="mx-auto mt-9 max-w-4xl font-display text-5xl leading-[1.06] md:text-6xl lg:text-7xl">
+              Prices should
               <br />
-              <span className="text-glow-amber text-amber">Margins protected.</span>
-              <br />
-              Inventory moving.
+              <em className="text-amber">pay you more.</em>
             </h1>
           </RevealGroup>
 
@@ -199,13 +193,11 @@ export default function HomePage() {
           </RevealGroup>
 
           <RevealGroup>
-            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-6 border-t border-line/70 pt-8 sm:grid-cols-4">
+            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-6 border-t border-line pt-8 sm:grid-cols-4">
               {stats.map((s) => (
                 <div key={s.label} className="text-center">
-                  <p className="font-display text-2xl text-glow-white md:text-3xl">
-                    {s.value}
-                  </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted md:text-[11px]">
+                  <p className="font-display text-3xl leading-none md:text-4xl">{s.value}</p>
+                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted md:text-[11px]">
                     {s.label}
                   </p>
                 </div>
@@ -213,17 +205,12 @@ export default function HomePage() {
             </div>
           </RevealGroup>
         </div>
-
-        <div className="relative flex justify-center pb-8">
-          <ChevronDown className="h-6 w-6 animate-bounce text-muted" />
-        </div>
       </section>
 
       {/* ===================== LIVE SURFACE ===================== */}
       <section id="live" className="relative overflow-hidden py-16">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 hud-grid opacity-60" />
-          <div className="aurora right-[10%] top-10 h-72 w-72 bg-[#FFC53D]/10" />
+          <div className="aurora right-[10%] top-10 h-72 w-72 bg-[#D97706]/10" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-5 md:px-6">
@@ -231,8 +218,8 @@ export default function HomePage() {
             <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="eyebrow-amber">the live workspace</p>
-                <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
-                  This page <span className="text-amber">is the product</span>
+                <h2 className="mt-2 font-display text-4xl leading-tight md:text-5xl">
+                  This page <em className="text-amber">is the product</em>
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
                   Loaded with a demo catalog. Add a SKU, hit the rule engine,
@@ -244,7 +231,7 @@ export default function HomePage() {
                 {["CSV upload", "Heuristic + AI", "8 currencies", "4 storefronts"].map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-line bg-panel px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-soft"
+                    className="rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-soft"
                   >
                     {t}
                   </span>
@@ -265,11 +252,11 @@ export default function HomePage() {
       </section>
 
       {/* ===================== HOW IT WORKS ===================== */}
-      <section className="border-y border-line/60 bg-abyss py-20">
+      <section className="border-y border-line bg-abyss py-20">
         <div className="mx-auto max-w-6xl px-5 md:px-6">
           <RevealGroup>
             <p className="eyebrow-amber text-center">three steps</p>
-            <h2 className="mx-auto mt-2 max-w-2xl text-center font-display text-3xl uppercase tracking-tight md:text-5xl">
+            <h2 className="mx-auto mt-2 max-w-2xl text-center font-display text-4xl leading-tight md:text-5xl">
               From CSV to margin in minutes
             </h2>
           </RevealGroup>
@@ -286,9 +273,7 @@ export default function HomePage() {
                       </span>
                       <span className="font-display text-4xl text-muted">{s.n}</span>
                     </div>
-                    <h3 className="mt-5 font-head text-lg font-semibold uppercase tracking-wide">
-                      {s.title}
-                    </h3>
+                    <h3 className="mt-5 font-head text-lg font-semibold">{s.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.text}</p>
                   </div>
                 </RevealGroup>
@@ -304,8 +289,9 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="eyebrow-amber">what you get back</p>
-              <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
-                Pricing that works <span className="text-amber">like a margin analyst</span>
+              <h2 className="mt-2 font-display text-4xl leading-tight md:text-5xl">
+                Pricing that works{" "}
+                <em className="text-amber">like a margin analyst</em>
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
                 The point is never "set prices automatically." It is fewer
@@ -315,7 +301,7 @@ export default function HomePage() {
             </div>
             <Link
               to="/features"
-              className="inline-flex items-center gap-2 font-head text-sm font-semibold text-amber transition hover:text-white"
+              className="inline-flex items-center gap-2 font-head text-sm font-semibold text-amber transition hover:text-ink"
             >
               Read the features <ArrowRight className="h-4 w-4" />
             </Link>
@@ -331,7 +317,7 @@ export default function HomePage() {
                   <span className="logo-tile flex h-11 w-11 items-center justify-center">
                     <Icon className="h-5 w-5 text-amber" />
                   </span>
-                  <h3 className="mt-4 font-head text-lg font-semibold">{b.title}</h3>
+                  <h3 className="mt-4 font-head text-lg font-semibold text-ink">{b.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-soft">{b.text}</p>
                 </div>
               </RevealGroup>
@@ -342,11 +328,11 @@ export default function HomePage() {
         <RevealGroup>
           <div className="accent-edge panel mt-12 flex flex-col items-center gap-5 p-7 text-center sm:flex-row sm:justify-between sm:text-left">
             <div className="flex flex-col items-center gap-4 sm:flex-row">
-              <span className="logo-tile flex h-13 w-13 shrink-0 items-center justify-center p-3">
+              <span className="logo-tile flex h-12 w-12 shrink-0 items-center justify-center">
                 <LineChart className="h-6 w-6 text-mint" />
               </span>
               <div>
-                <p className="font-head text-lg font-semibold">
+                <p className="font-head text-lg font-semibold text-ink">
                   Heuristic + AI, compared side by side
                 </p>
                 <p className="mt-1 max-w-xl text-sm text-ink-soft">
@@ -356,17 +342,16 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <Sparkles className="hidden h-7 w-7 text-muted sm:block" />
           </div>
         </RevealGroup>
       </section>
 
       {/* ===================== TESTIMONIALS ===================== */}
-      <section className="border-y border-line/60 bg-abyss py-20">
+      <section className="border-y border-line bg-abyss py-20">
         <div className="mx-auto max-w-6xl px-5 md:px-6">
           <RevealGroup>
             <p className="eyebrow-amber text-center">pricing teams report</p>
-            <h2 className="mx-auto mt-2 max-w-2xl text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+            <h2 className="mx-auto mt-2 max-w-2xl text-center font-display text-4xl leading-tight md:text-4xl">
               What operators do with it
             </h2>
           </RevealGroup>
@@ -378,8 +363,8 @@ export default function HomePage() {
                   <blockquote className="flex-1 text-sm leading-relaxed text-ink-soft">
                     "{t.q}"
                   </blockquote>
-                  <figcaption className="mt-6 border-t border-line/60 pt-4">
-                    <p className="font-head text-sm font-semibold">{t.name}</p>
+                  <figcaption className="mt-6 border-t border-line pt-4">
+                    <p className="font-head text-sm font-semibold text-ink">{t.name}</p>
                     <p className="mt-0.5 font-mono text-xs text-muted">{t.org}</p>
                   </figcaption>
                 </figure>
@@ -393,7 +378,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-3xl px-5 py-20 md:px-6">
         <RevealGroup>
           <p className="eyebrow-amber text-center">straight answers</p>
-          <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+          <h2 className="mt-2 text-center font-display text-4xl leading-tight md:text-4xl">
             Before you ask
           </h2>
         </RevealGroup>
@@ -402,7 +387,7 @@ export default function HomePage() {
           {faqs.map((f, i) => (
             <RevealGroup key={f.q}>
               <details className="panel group overflow-hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 font-head font-semibold">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 font-head font-semibold text-ink">
                   {f.q}
                   <span className="text-xl leading-none text-amber transition-transform group-open:rotate-45">
                     +
@@ -418,8 +403,7 @@ export default function HomePage() {
       {/* ===================== CTA ===================== */}
       <section className="relative overflow-hidden pb-24">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 hud-grid" />
-          <div className="aurora bottom-0 left-1/3 h-72 w-72 bg-[#FFC53D]/12" />
+          <div className="aurora bottom-0 left-1/3 h-72 w-72 bg-[#D97706]/12" />
         </div>
         <RevealGroup>
           <div className="accent-edge panel mx-auto max-w-4xl p-8 text-center md:p-14">
@@ -427,7 +411,7 @@ export default function HomePage() {
               <OptimaredMark size={64} />
             </span>
             <p className="eyebrow-amber mt-6">go margin-first</p>
-            <h2 className="mx-auto mt-3 max-w-2xl font-display text-3xl uppercase tracking-tight md:text-5xl">
+            <h2 className="mx-auto mt-3 max-w-2xl font-display text-4xl leading-tight md:text-5xl">
               Upload your SKUs and run it free tonight
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink-soft md:text-base">

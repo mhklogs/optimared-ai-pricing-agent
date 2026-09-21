@@ -17,7 +17,7 @@ const COMPANY = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line/70 bg-abyss px-6 py-12">
+    <footer className="border-t border-line bg-abyss px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.6fr_1fr_1fr] md:items-start">
           <div>
@@ -27,16 +27,14 @@ export default function Footer() {
               velocity. Heuristic rules keep you above your floor; the AI agent
               adds market judgment.
             </p>
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
               <span className="pulse-dot h-2 w-2 rounded-full bg-amber" />
               Runs on your catalog
             </p>
           </div>
 
           <nav>
-            <p className="font-head text-sm font-semibold uppercase tracking-[0.2em] text-ink">
-              Product
-            </p>
+            <p className="font-head text-sm font-semibold text-ink">Product</p>
             <ul className="mt-4 space-y-3">
               {PRODUCT.map((l) => (
                 <li key={l.to}>
@@ -53,9 +51,7 @@ export default function Footer() {
           </nav>
 
           <nav>
-            <p className="font-head text-sm font-semibold uppercase tracking-[0.2em] text-ink">
-              Company
-            </p>
+            <p className="font-head text-sm font-semibold text-ink">Company</p>
             <ul className="mt-4 space-y-3">
               {COMPANY.map((l) => (
                 <li key={l.to}>
@@ -71,7 +67,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-line/60 pt-6 md:flex-row md:items-center">
+        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 md:flex-row md:items-center">
           <p className="text-xs text-muted">&copy; 2026 Optimared. All rights reserved.</p>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
             Margin-first pricing · no credit card to start
