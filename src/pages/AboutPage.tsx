@@ -1,11 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  Target,
-  BarChart3,
-  ShieldCheck,
-  HeartHandshake,
-  ArrowRight,
-} from "lucide-react";
+import { Target, BarChart3, ShieldCheck, HeartHandshake, ArrowRight } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
 
@@ -13,33 +7,33 @@ const team = [
   {
     image: "/images/team-1.svg",
     name: "Alex Morgan",
-    title: "CEO",
-    bio: "Former retail analytics lead. Believes pricing is the highest-leverage decision a store makes.",
+    title: "Pricing Strategy",
+    bio: "Former retail analytics lead. Believes pricing is the highest-leverage decision a store makes every single day.",
   },
   {
     image: "/images/team-2.svg",
     name: "Priya Sharma",
-    title: "CTO",
-    bio: "Ex-forecasting engineer. Turns messy market signals into deterministic, auditable systems.",
+    title: "Pricing Engine",
+    bio: "Ex-forecasting engineer. Turns messy market signals into deterministic, auditable pricing systems.",
   },
   {
     image: "/images/team-3.svg",
     name: "Sara Chen",
-    title: "Head of Product",
+    title: "Product",
     bio: "Spent a decade shipping pricing tools for e-commerce teams that hate spreadsheets.",
   },
   {
     image: "/images/team-4.svg",
     name: "Marcus Okafor",
-    title: "Lead Engineer",
-    bio: "Builds the AI agent layer — prompt pipelines, structured outputs, and reliable APIs.",
+    title: "AI Agent Layer",
+    bio: "Builds the agent stack — prompt pipelines, structured outputs, and reliable pricing APIs.",
   },
 ];
 
 const values = [
   {
     icon: BarChart3,
-    title: "Data-Driven",
+    title: "Margin-First",
     desc: "Every price change comes with a rationale grounded in inventory, competitors, and market context — never a gut feeling.",
   },
   {
@@ -49,115 +43,132 @@ const values = [
   },
   {
     icon: HeartHandshake,
-    title: "Customer-First",
-    desc: "We optimize for retailers, not platforms. You keep control of strategy and guardrails.",
+    title: "Operator-Owned",
+    desc: "You keep control of strategy, guardrails, and every final call. We optimize for your store, not the platform.",
   },
 ];
 
 export default function AboutPage() {
-  usePageMeta("About — OptimaRed");
+  usePageMeta(
+    "About — Optimared",
+    "The team behind Optimared, an AI dynamic pricing agent for e-commerce margins."
+  );
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased">
+    <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#e7e5e4_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative px-6 py-20 md:py-28 max-w-6xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight text-stone-900">
-            The Team Behind OptimaRed
+      <section className="relative overflow-hidden border-b border-line/60">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-24 right-[18%] h-64 w-64 bg-[#FFC53D]/12" />
+        </div>
+        <div className="relative px-6 py-20 text-center md:py-28">
+          <p className="eyebrow-amber">why optimared</p>
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl uppercase tracking-tight md:text-6xl">
+            Pricing by hand is{" "}
+            <span className="text-amber">how margin leaks</span>
           </h1>
-          <p className="text-stone-500 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
-            A small team obsessed with one question: why do retailers still price by hand?
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">
+            A small team obsessed with one question: why do e-commerce teams still
+            reprice in spreadsheets while the market moves every few hours?
           </p>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
         <RevealGroup>
-          <div className="bg-white border border-stone-200 rounded-2xl p-8 md:p-12 shadow-sm text-center">
-            <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-6">
-              <Target className="w-6 h-6" />
-            </div>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-900 max-w-2xl mx-auto">
-              Making dynamic pricing accessible to every e-commerce team
+          <div className="accent-edge panel p-8 text-center md:p-12">
+            <span className="logo-tile mx-auto flex h-12 w-12 items-center justify-center">
+              <Target className="h-6 w-6 text-amber" />
+            </span>
+            <h2 className="mx-auto mt-6 max-w-2xl font-display text-2xl uppercase tracking-tight md:text-3xl">
+              Dynamic pricing for teams that ship, not just enterprises with consultants
             </h2>
-            <p className="text-stone-500 mt-4 max-w-2xl mx-auto leading-relaxed">
-              Dynamic pricing used to live in enterprise tooling with six-figure licenses
-              and armies of consultants. OptimaRed exists to give any retailer the same
-              compounding advantage — decision-grade rules, a reasoning AI agent, and full
-              transparency into every price move.
+            <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-ink-soft">
+              Optimared exists to give any retailer the same compounding advantage:
+              decision-grade pricing rules, a reasoning AI analyst, and full
+              transparency into every price move. Built for the operator who has a
+              catalog to manage tonight, not a six-month rollout.
             </p>
           </div>
         </RevealGroup>
       </section>
 
       {/* Team */}
-      <section className="py-4 px-6 max-w-6xl mx-auto pb-20">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            Meet the Team
-          </h2>
-          <p className="text-stone-500 text-lg mt-3">Small team, sharp focus.</p>
+      <section className="border-y border-line/60 bg-abyss py-20">
+        <div className="mx-auto max-w-6xl px-5 md:px-6">
+          <RevealGroup>
+            <p className="eyebrow-amber text-center">the team</p>
+            <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+              Small team, sharp focus
+            </h2>
+          </RevealGroup>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m) => (
+              <RevealGroup key={m.name}>
+                <div className="panel h-full p-6 text-center">
+                  <img
+                    src={m.image}
+                    alt={m.title}
+                    className="mx-auto mb-4 h-24 w-24 rounded-2xl"
+                  />
+                  <h3 className="font-head text-lg font-semibold">{m.name}</h3>
+                  <p className="mt-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-amber">
+                    {m.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{m.bio}</p>
+                </div>
+              </RevealGroup>
+            ))}
+          </div>
         </div>
-        <RevealGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {team.map((m) => (
-            <div
-              key={m.name}
-              className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm text-center hover:shadow-md transition-all"
-            >
-              <img
-                src={m.image}
-                alt={m.title}
-                className="w-24 h-24 rounded-2xl mx-auto mb-4"
-              />
-              <h3 className="font-display font-bold text-lg text-stone-800">{m.name}</h3>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-blue-600 mt-1">
-                {m.title}
-              </div>
-              <p className="text-sm text-stone-500 mt-3 leading-relaxed">{m.bio}</p>
-            </div>
-          ))}
-        </RevealGroup>
       </section>
 
       {/* Values */}
-      <section className="pb-20 px-6 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            What We Value
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+        <RevealGroup>
+          <p className="eyebrow-amber text-center">what we value</p>
+          <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+            The walls we refuse to cut
           </h2>
-        </div>
-        <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {values.map((v) => (
-            <div
-              key={v.title}
-              className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm"
-            >
-              <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mb-4">
-                <v.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-stone-800">{v.title}</h3>
-              <p className="text-sm text-stone-500 mt-2 leading-relaxed">{v.desc}</p>
-            </div>
-          ))}
         </RevealGroup>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {values.map((v) => {
+            const Icon = v.icon;
+            return (
+              <RevealGroup key={v.title}>
+                <div className="panel h-full p-6">
+                  <span className="logo-tile flex h-11 w-11 items-center justify-center">
+                    <Icon className="h-5 w-5 text-amber" />
+                  </span>
+                  <h3 className="mt-4 font-head text-lg font-semibold">{v.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{v.desc}</p>
+                </div>
+              </RevealGroup>
+            );
+          })}
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="pb-20 px-6">
-        <div className="max-w-6xl mx-auto bg-stone-900 rounded-3xl px-6 py-12 text-center">
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
-            Want to Talk Pricing?
-          </h2>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold mt-6 shadow-lg shadow-blue-600/30 transition-colors"
-          >
-            Get in Touch
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+      <section className="px-5 pb-20 md:px-6">
+        <RevealGroup>
+          <div className="accent-edge panel mx-auto max-w-4xl p-8 text-center md:p-12">
+            <h2 className="mx-auto font-display text-2xl uppercase tracking-tight md:text-4xl">
+              Want to talk pricing?
+            </h2>
+            <div className="mt-8 flex flex-wrap justify-center gap-3.5">
+              <Link to="/contact" className="btn btn-primary">
+                Get in touch
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/dashboard" className="btn btn-ghost">
+                Try it free
+              </Link>
+            </div>
+          </div>
+        </RevealGroup>
       </section>
     </div>
   );

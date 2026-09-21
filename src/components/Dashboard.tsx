@@ -248,7 +248,7 @@ export default function Dashboard() {
           id: "alert-1",
           timestamp: new Date(Date.now() - 3600000).toLocaleTimeString(),
           title: "Startup Price Guardian Activated",
-          message: "OptimaRed is running and listening to Shopify and Amazon channels.",
+          message: "Optimared is running and listening to Shopify and Amazon channels.",
           type: "info",
           read: false,
         }
@@ -866,7 +866,7 @@ export default function Dashboard() {
         setDeviceNotificationPermission(permission);
         if (permission === 'granted') {
           triggerAlert("success", "Native device alerts successfully activated!");
-          new Notification("OptimaRed Push Alerts Enabled", {
+          new Notification("Optimared Push Alerts Enabled", {
             body: "You will now receive native push notifications for critical market shifts and AI repricing updates.",
             icon: "/logo.jpg"
           });
@@ -1053,10 +1053,10 @@ export default function Dashboard() {
   const unreadNotificationsCount = notifications.filter(n => !n.read).length;
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-700 flex flex-col antialiased">
+    <div className="optimared-app min-h-screen bg-stone-50 text-stone-700 flex flex-col antialiased">
       
       {/* Light Header Bar */}
-      <header className="sticky top-16 z-40 bg-white border-b border-stone-200 px-6 py-4 shadow-sm flex items-center justify-between">
+      <header className="sticky top-16 z-40 bg-white border-b border-stone-200 px-6 py-4 shadow-sm flex items-center justify-between flex-wrap gap-3">
         
         {/* Brand */}
         <div className="flex items-center gap-3.5">
@@ -1065,7 +1065,7 @@ export default function Dashboard() {
           </div>
           <div>
             <div className="flex items-center gap-2.5">
-              <h1 className="font-display font-bold text-lg text-stone-900 tracking-tight">OptimaRed</h1>
+              <h1 className="font-display font-bold text-lg text-stone-900 tracking-tight">Optimared</h1>
               <span className="bg-blue-50 text-blue-700 text-xs uppercase font-bold tracking-widest px-2.5 py-1 rounded-full border border-blue-200/60">
                 AI Co-Pilot
               </span>
@@ -1357,7 +1357,7 @@ export default function Dashboard() {
                   onClick={() => setShowBulkConfirm(true)}
                   disabled={filteredProducts.length === 0 || isBulkRepricing}
                   title="Apply heuristic recommendations to every visible SKU"
-                  className="text-xs font-bold px-3 py-2 rounded-xl bg-stone-800 hover:bg-stone-900 text-white flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer"
+                  className="text-xs font-bold px-3 py-2 rounded-xl bg-amber hover:bg-[#f0b32d] text-void flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   <Zap className="w-3.5 h-3.5" /> Bulk Reprice ({filteredProducts.length})
                 </button>
@@ -1521,7 +1521,7 @@ export default function Dashboard() {
             
             {/* HOVER TOOLTIP HELP BAR */}
             <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-white text-stone-400 text-xs px-2.5 py-1 rounded-lg shadow-md pointer-events-none transition-opacity -top-3 left-4 border border-stone-200">
-              💡 Drag cursor over graph columns to inspect historical volatility ratings.
+              TIP — Drag cursor over graph columns to inspect historical volatility ratings.
             </div>
 
             <div className="flex items-center justify-between pb-3 border-b border-stone-100 mb-5">
@@ -1564,8 +1564,8 @@ export default function Dashboard() {
               <svg className="w-full h-full absolute inset-0 z-10" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="wave-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#2563eb" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#2563eb" stopOpacity="0.0" />
+                    <stop offset="0%" stopColor="#FFC53D" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#FFC53D" stopOpacity="0.0" />
                   </linearGradient>
                 </defs>
                 
@@ -1579,7 +1579,7 @@ export default function Dashboard() {
                 <path
                   d={volatilityTimeline.map((val, idx) => `${idx === 0 ? "M" : "L"} ${idx * (420 / (volatilityTimeline.length - 1))} ${120 - val * 1.5}`).join(" ")}
                   fill="none"
-                  stroke="#2563eb"
+                  stroke="#FFC53D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                 />
@@ -1589,7 +1589,7 @@ export default function Dashboard() {
                   cx={420}
                   cy={120 - volatilityTimeline[volatilityTimeline.length - 1] * 1.5}
                   r="4"
-                  fill="#2563eb"
+                  fill="#FFC53D"
                 />
               </svg>
               
@@ -1919,7 +1919,7 @@ export default function Dashboard() {
             
             {/* HOVER DETAIL POP */}
             <div className="absolute z-20 opacity-0 group-hover:opacity-100 bg-white text-stone-400 text-xs px-2.5 py-1 rounded-lg shadow-md pointer-events-none transition-opacity -top-3 left-4 border border-stone-200">
-              💡 Optimization tips derived from catalog audits and stock levels.
+              TIP — Optimization tips derived from catalog audits and stock levels.
             </div>
 
             <div className="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">

@@ -1,179 +1,282 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ChevronDown, ArrowRight } from "lucide-react";
+import { Check, Minus, ArrowRight, CircleCheck, Gift } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
 
 const tiers = [
   {
     name: "Free",
-    monthly: 0,
-    desc: "For testing and small catalogs.",
-    features: ["5 products", "Heuristic pricing", "1 user", "Basic support"],
-    cta: "Start Free",
-    highlighted: false,
+    price: "$0",
+    period: "no card",
+    tag: "try on your real SKUs",
+    cta: "Try it free",
+    highlight: false,
+    features: [
+      "Demo catalog to explore immediately",
+      "Upload or enter your own SKUs",
+      "Heuristic rule engine + side-by-side compare",
+      "1 user",
+      "Shopify, Amazon, WooCommerce, eBay sync",
+    ],
+    off: ["Gemini AI analyst", "AI Auto-Pilot", "API access"],
   },
   {
     name: "Pro",
-    monthly: 49,
-    desc: "For growing stores ready to automate.",
-    features: [
-      "50 products",
-      "Heuristic + AI pricing",
-      "5 users",
-      "Priority support",
-      "Multi-currency",
-    ],
+    price: "$49",
+    period: "/ month",
+    tag: "the favourite",
     cta: "Go Pro",
-    highlighted: true,
+    highlight: true,
+    features: [
+      "Everything in Free",
+      "50 SKUs managed",
+      "Gemini AI pricing analyst with rationale",
+      "5 users",
+      "Multi-currency: 8 markets",
+      "CSV import / export",
+      "Priority support",
+    ],
+    off: ["AI Auto-Pilot", "API access"],
   },
   {
     name: "Team",
-    monthly: 149,
-    desc: "For teams that need scale and control.",
+    price: "$149",
+    period: "/ month",
+    tag: "scale & control",
+    cta: "Talk to sales",
+    highlight: false,
     features: [
-      "Unlimited products",
-      "All features",
+      "Everything in Pro",
+      "Unlimited SKUs",
+      "AI Auto-Pilot repricing on market swings",
       "Unlimited users",
+      "Custom integrations + API access",
       "Dedicated support",
-      "Custom integrations",
-      "API access",
     ],
-    cta: "Contact Sales",
-    highlighted: false,
+    off: [],
   },
 ];
 
 const faqs = [
   {
-    q: "Can I switch tiers later?",
-    a: "Yes. Upgrade or downgrade anytime from Settings — changes are prorated to the end of your billing cycle and take effect immediately.",
+    q: "Can I really start free with my own catalog?",
+    a: "Yes. Open the workspace with the demo catalog, then upload a CSV or add SKUs by hand. No card, no sales call — the free workspace is the full product.",
   },
   {
-    q: "Does the Free tier require a credit card?",
-    a: "No. The Free tier is completely free with no credit card required. You can manage up to 5 products with heuristic pricing.",
+    q: "When do I upgrade?",
+    a: "When a growing catalog outgrows the free limit, you need the AI analyst, or your team needs seats. Everything you set up on Free carries over.",
   },
   {
-    q: "How is AI pricing billed on the Pro tier?",
-    a: "Gemini-based analysis is included in your Pro subscription, subject to fair-use limits so one catalog can't disrupt service for others.",
-  },
-  {
-    q: "What counts as an unlimited product on Team?",
-    a: "There's no product-count cap on Team. You can connect as many SKUs and storefront channels as your catalog holds.",
+    q: "What does the AI analyst cost on Pro?",
+    a: "Nothing extra. Gemini-based pricing analysis is included in the plan, subject to fair-use limits so one catalog can't disrupt service for others.",
   },
   {
     q: "Is there an annual discount?",
-    a: "Yes, annual billing gives you 2 months free on Pro and Team plans — switch to yearly in billing to apply it.",
+    a: "Yes — annual billing gives you 2 months free on Pro and Team. Switch to yearly in billing to apply it.",
   },
 ];
 
 export default function PricingPage() {
-  usePageMeta("Pricing — OptimaRed");
+  usePageMeta(
+    "Pricing — Optimared",
+    "Optimared pricing: start free on your real SKUs, upgrade when automation pays for itself. No credit card required to start."
+  );
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased">
+    <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#e7e5e4_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative px-6 py-20 md:py-28 max-w-6xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight text-stone-900">
-            Simple, Transparent Pricing
+      <section className="relative overflow-hidden border-b border-line/60">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-24 right-[12%] h-72 w-72 bg-[#FFC53D]/12" />
+          <div className="aurora left-[8%] top-16 h-64 w-64 bg-[#4EF2BA]/7" />
+        </div>
+        <div className="relative px-6 py-20 text-center md:py-28">
+          <p className="eyebrow-amber">one free trial · real work</p>
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl uppercase tracking-tight md:text-6xl">
+            Start free. Upgrade when{" "}
+            <span className="text-glow-amber text-amber">the margin shows up.</span>
           </h1>
-          <p className="text-stone-500 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
-            Start free. Upgrade when automation starts paying for itself.
+          <p className="mx-auto mt-5 max-w-2xl text-ink-soft md:text-lg">
+            Optimared is free to use on your actual catalog. Upgrade when a
+            bigger book, seats, or the AI analyst start paying for themselves.
           </p>
         </div>
       </section>
 
-      {/* Tiers */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-        <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {tiers.map((t) => (
-            <div
-              key={t.name}
-              className={`relative flex flex-col bg-white border rounded-2xl p-7 shadow-sm transition-all ${
-                t.highlighted
-                  ? "border-blue-600 ring-2 ring-blue-600/20 md:-mt-4 md:-mb-4"
-                  : "border-stone-200"
-              }`}
-            >
-              {t.highlighted && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md whitespace-nowrap">
-                  Most Popular
-                </span>
-              )}
-              <h2 className="font-display font-bold text-xl text-stone-800">{t.name}</h2>
-              <p className="text-sm text-stone-500 mt-1">{t.desc}</p>
-              <div className="mt-5 flex items-baseline gap-1">
-                <span className="font-mono font-bold text-4xl text-stone-900">
-                  ${t.monthly}
-                </span>
-                <span className="text-xs uppercase tracking-widest font-semibold text-stone-400">
-                  /mo
-                </span>
+      {/* Free trial strip */}
+      <section className="mx-auto max-w-6xl px-5 pt-12 md:px-6">
+        <RevealGroup>
+          <div className="accent-edge panel flex flex-col items-center gap-5 p-7 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
+              <span className="logo-tile flex h-12 w-12 shrink-0 items-center justify-center">
+                <Gift className="h-5 w-5 text-amber" />
+              </span>
+              <div>
+                <p className="font-head text-lg font-semibold">
+                  Try it free — upload your SKUs
+                </p>
+                <p className="mt-0.5 max-w-xl text-sm text-ink-soft">
+                  Demo catalog included. Run the rule engine and the AI analyst on
+                  your products before you spend a cent.
+                </p>
               </div>
-              <ul className="mt-6 space-y-3 flex-1">
-                {t.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-stone-600">
-                    <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/dashboard"
-                className={`mt-8 text-center px-6 py-3 rounded-xl font-semibold transition-colors ${
-                  t.highlighted
-                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20"
-                    : "bg-stone-900 hover:bg-stone-800 text-white"
-                }`}
-              >
-                {t.cta}
-              </Link>
             </div>
+            <Link
+              to="/dashboard"
+              className="btn btn-primary shrink-0"
+            >
+              Start now
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </RevealGroup>
+      </section>
+
+      {/* Tiers */}
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-6">
+        <div className="grid gap-6 md:grid-cols-3">
+          {tiers.map((t, i) => (
+            <RevealGroup key={t.name}>
+              <div
+                className={
+                  t.highlight
+                    ? "relative flex h-full flex-col rounded-2xl border border-amber/60 bg-panel p-7 neon-ring"
+                    : "relative flex h-full flex-col rounded-2xl border border-line bg-panel p-7"
+                }
+              >
+                {t.highlight && (
+                  <span className="absolute -top-3 right-6 rounded-full bg-amber px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-void">
+                    {t.tag}
+                  </span>
+                )}
+                <p className="font-head text-sm font-semibold uppercase tracking-[0.22em] text-muted">
+                  {t.name}
+                </p>
+                <p className="mt-3 font-display text-5xl">
+                  {t.price}
+                  <span className="font-sans text-sm text-muted"> {t.period}</span>
+                </p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
+                  {t.tag}
+                </p>
+
+                <ul className="mt-6 flex-1 space-y-2.5">
+                  {t.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-mint" />
+                      {f}
+                    </li>
+                  ))}
+                  {t.off.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-muted/80">
+                      <Minus className="mt-0.5 h-4 w-4 shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to="/dashboard"
+                  onClick={(e) => {
+                    if (t.name === "Team") {
+                      e.preventDefault();
+                      window.location.href = "mailto:hello@optimared.ai?subject=Team plan";
+                    }
+                  }}
+                  className={`btn mt-7 w-full text-sm ${
+                    t.highlight ? "btn-primary" : "btn-ghost"
+                  }`}
+                >
+                  {t.cta} <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </RevealGroup>
           ))}
+        </div>
+      </section>
+
+      {/* Guarantee strip */}
+      <section className="mx-auto max-w-6xl px-5 pb-14 md:px-6">
+        <RevealGroup>
+          <div className="panel flex flex-col items-center justify-between gap-6 p-8 sm:flex-row">
+            <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+              <CircleCheck className="h-7 w-7 shrink-0 text-mint" />
+              <div>
+                <p className="font-head font-semibold">
+                  The safety floor is included on every plan
+                </p>
+                <p className="mt-1 max-w-xl text-sm text-ink-soft">
+                  Prices never break COGS + 5%. The AI cannot override it unless
+                  you explicitly open a liquidation window.
+                </p>
+              </div>
+            </div>
+            <div className="grid w-full grid-cols-2 gap-4 sm:w-auto sm:grid-cols-4">
+              {[
+                { v: "$0", l: "free to start" },
+                { v: "1", l: "trial on real work" },
+                { v: "8", l: "currencies" },
+                { v: "No", l: "card required" },
+              ].map((s) => (
+                <div key={s.l} className="rounded-xl bg-white/5 p-4 text-center">
+                  <p className="font-display text-2xl text-glow-white">{s.v}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">
+                    {s.l}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </RevealGroup>
       </section>
 
       {/* FAQ */}
-      <section className="pb-20 px-6 max-w-3xl mx-auto">
-        <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900 text-center mb-10">
-          Frequently Asked Questions
-        </h2>
-        <RevealGroup className="space-y-3">
+      <section className="mx-auto max-w-3xl px-5 pb-20 md:px-6">
+        <RevealGroup>
+          <p className="eyebrow-amber text-center">before you pay</p>
+          <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+            Billing questions
+          </h2>
+        </RevealGroup>
+
+        <div className="mt-10 space-y-3">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="bg-white border border-stone-200 rounded-2xl shadow-sm overflow-hidden">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left cursor-pointer"
-                >
-                  <span className="font-semibold text-stone-800 text-sm md:text-base">
-                    {f.q}
-                  </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-blue-600 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-5 text-sm text-stone-500 leading-relaxed">
-                    {f.a}
-                  </div>
-                )}
-              </div>
+              <RevealGroup key={f.q}>
+                <div className="panel overflow-hidden">
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-4 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-head font-semibold">{f.q}</span>
+                    <span
+                      className={`text-xl leading-none text-amber transition-transform duration-200 ${
+                        isOpen ? "rotate-45" : ""
+                      }`}
+                    >
+                      +
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <p className="px-6 pb-5 text-sm leading-relaxed text-ink-soft">
+                      {f.a}
+                    </p>
+                  )}
+                </div>
+              </RevealGroup>
             );
           })}
-        </RevealGroup>
+        </div>
 
-        <div className="text-center mt-12">
-          <Link
-            to="/dashboard"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-xl font-semibold shadow-lg shadow-blue-600/20 transition-colors"
-          >
-            Start Optimizing Today
-            <ArrowRight className="w-4 h-4" />
+        <div className="mt-14 text-center">
+          <Link to="/dashboard" className="btn btn-primary">
+            Try it free — upload your SKUs
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>

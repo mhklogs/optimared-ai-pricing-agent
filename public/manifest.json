@@ -1,13 +1,19 @@
 {
-  "name": "OptimaRed Intelligent Dynamic Pricing Agent",
-  "short_name": "OptimaRed",
+  "name": "Optimared AI Dynamic Pricing Agent",
+  "short_name": "Optimared",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#dc2626",
-  "description": "Enterprise-grade AI-powered dynamic pricing agent for product listings and store syncing. Reacts automatically to market swings, exchange rates, and geopolitics.",
+  "background_color": "#05060b",
+  "theme_color": "#ffc53d",
+  "description": "AI dynamic pricing agent for e-commerce margins. Rule-engine discipline, Gemini AI judgment, and a safety floor that never prices below COGS + 5%.",
   "orientation": "any",
   "icons": [
+    {
+      "src": "optimared.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "logo.jpg",
       "sizes": "1024x1024",

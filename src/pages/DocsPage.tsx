@@ -1,100 +1,86 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Terminal, ChevronRight } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
 
 function CodeBlock({ code }: { code: string }) {
   return (
-    <pre className="bg-stone-900 text-stone-100 font-mono text-xs md:text-sm rounded-2xl p-5 overflow-x-auto leading-relaxed">
+    <pre className="overflow-x-auto rounded-xl border border-line bg-void p-5 font-mono text-xs leading-relaxed text-ink-soft md:text-sm">
       {code}
     </pre>
   );
 }
 
+function MethodChip({ method }: { method: string }) {
+  const style =
+    method === "GET"
+      ? "border-amber/40 bg-amber/10 text-amber"
+      : method === "POST"
+        ? "border-mint/40 bg-mint/10 text-mint"
+        : "border-line bg-panel-2 text-muted";
+  return (
+    <span
+      className={`inline-block rounded-full border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide ${style}`}
+    >
+      {method}
+    </span>
+  );
+}
+
 const endpoints = [
-  {
-    method: "GET",
-    path: "/api/products",
-    desc: "List all products in the catalog",
-  },
-  {
-    method: "POST",
-    path: "/api/products",
-    desc: "Create or update a product",
-  },
-  {
-    method: "DELETE",
-    path: "/api/products/:id",
-    desc: "Delete a product by SKU",
-  },
-  {
-    method: "POST",
-    path: "/api/products/reset",
-    desc: "Reset catalog to defaults or a provided list",
-  },
-  {
-    method: "POST",
-    path: "/api/analyze-heuristic",
-    desc: "Run deterministic heuristic pricing on a product",
-  },
-  {
-    method: "POST",
-    path: "/api/analyze-ai",
-    desc: "Run Gemini AI cognitive pricing on a product",
-  },
-  {
-    method: "POST",
-    path: "/api/contact",
-    desc: "Submit a contact form message",
-  },
+  { method: "GET", path: "/api/products", desc: "List all products in the catalog" },
+  { method: "POST", path: "/api/products", desc: "Create or update a product" },
+  { method: "DELETE", path: "/api/products/:id", desc: "Delete a product by SKU" },
+  { method: "POST", path: "/api/products/reset", desc: "Reset catalog to defaults or a provided list" },
+  { method: "POST", path: "/api/analyze-heuristic", desc: "Run deterministic heuristic pricing on a product" },
+  { method: "POST", path: "/api/analyze-ai", desc: "Run Gemini AI cognitive pricing on a product" },
+  { method: "POST", path: "/api/contact", desc: "Submit a contact form message" },
 ];
 
-const methods = {
-  GET: "bg-emerald-50 text-emerald-600 border-emerald-200",
-  POST: "bg-blue-50 text-blue-600 border-blue-200",
-  DELETE: "bg-stone-100 text-stone-500 border-stone-200",
-};
-
 export default function DocsPage() {
-  usePageMeta("Documentation — OptimaRed");
+  usePageMeta(
+    "Documentation — Optimared",
+    "Optimared documentation: API reference, heuristic pricing rules, AI agent configuration, and market event simulation."
+  );
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased">
+    <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#e7e5e4_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative px-6 py-20 md:py-28 max-w-4xl mx-auto">
-          <span className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6">
-            <Terminal className="w-3 h-3" />
+      <section className="relative overflow-hidden border-b border-line/60">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-24 right-[15%] h-64 w-64 bg-[#FFC53D]/10" />
+        </div>
+        <div className="relative mx-auto max-w-4xl px-6 py-20 md:py-24">
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-3.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-amber">
+            <Terminal className="h-3.5 w-3.5" />
             Documentation
           </span>
-          <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight text-stone-900">
-            How It Works
+          <h1 className="mt-6 font-display text-4xl uppercase tracking-tight md:text-5xl">
+            How it works
           </h1>
-          <p className="text-stone-500 text-lg mt-4 max-w-2xl">
-            Everything you need to get products, rules, and the AI agent running.
+          <p className="mt-4 max-w-2xl text-lg text-ink-soft">
+            Everything you need to get products, rules, and the pricing agent running.
           </p>
         </div>
       </section>
 
-      <div className="py-20 px-6 max-w-4xl mx-auto space-y-16">
-        {/* Getting started */}
+      <div className="mx-auto max-w-4xl space-y-16 px-6 py-20">
         <RevealGroup className="space-y-6">
           <section>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-900 mb-5">
-              Getting Started
-            </h2>
-            <div className="space-y-8">
+            <div className="flex items-center gap-2 font-head text-2xl font-semibold uppercase tracking-wide text-ink md:text-3xl">
+              Getting started
+              <ChevronRight className="h-5 w-5 text-amber" />
+            </div>
+            <div className="mt-6 space-y-8">
               <div>
-                <h3 className="font-semibold text-stone-800 mb-2">1. Fetch the catalog</h3>
-                <CodeBlock
-                  code={`curl ${"`"}https://your-app.vercel.app/api/products${"`"}`}
-                />
+                <h3 className="mb-2 font-semibold text-ink">1. Fetch the catalog</h3>
+                <CodeBlock code={`curl https://your-app.vercel.app/api/products`} />
               </div>
               <div>
-                <h3 className="font-semibold text-stone-800 mb-2">2. Add or update a product</h3>
+                <h3 className="mb-2 font-semibold text-ink">2. Add or update a product</h3>
                 <CodeBlock
-                  code={`curl -X POST ${"`"}https://your-app.vercel.app/api/products${"`"} \\
+                  code={`curl -X POST https://your-app.vercel.app/api/products \\
   -H "Content-Type: application/json" \\
   -d '{
     "id": "SKU-HZN-80",
@@ -109,9 +95,9 @@ export default function DocsPage() {
                 />
               </div>
               <div>
-                <h3 className="font-semibold text-stone-800 mb-2">3. Analyze pricing</h3>
+                <h3 className="mb-2 font-semibold text-ink">3. Analyze pricing</h3>
                 <CodeBlock
-                  code={`curl -X POST ${"`"}https://your-app.vercel.app/api/analyze-heuristic${"`"} \\
+                  code={`curl -X POST https://your-app.vercel.app/api/analyze-heuristic \\
   -H "Content-Type: application/json" \\
   -d '{ "product": { "id": "SKU-HZN-80", "current_price": 220,
          "cogs": 120, "target_margin": 40, "inventory_level": "Low",
@@ -123,19 +109,20 @@ export default function DocsPage() {
           </section>
         </RevealGroup>
 
-        {/* Configuring AI agent */}
         <RevealGroup className="space-y-6">
           <section>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-900 mb-5">
-              Configuring the AI Agent
-            </h2>
-            <p className="text-stone-500 text-sm md:text-base leading-relaxed mb-4">
-              The Gemini agent follows your custom system prompt as its primary directive.
-              Pass <span className="font-mono text-blue-600">systemInstruction</span> to set
+            <div className="flex items-center gap-2 font-head text-2xl font-semibold uppercase tracking-wide text-ink md:text-3xl">
+              Configuring the AI agent
+              <ChevronRight className="h-5 w-5 text-amber" />
+            </div>
+            <p className="mt-6 mb-4 text-sm leading-relaxed text-ink-soft md:text-base">
+              The Gemini analyst follows your custom system prompt as its primary
+              directive. Pass{" "}
+              <span className="font-mono text-amber">systemInstruction</span> to set
               pricing philosophy, guardrails, and brand positioning.
             </p>
             <CodeBlock
-              code={`curl -X POST ${"`"}https://your-app.vercel.app/api/analyze-ai${"`"} \\
+              code={`curl -X POST https://your-app.vercel.app/api/analyze-ai \\
   -H "Content-Type: application/json" \\
   -d '{
     "product": { "id": "SKU-HZN-80", "current_price": 220, "cogs": 120,
@@ -150,47 +137,54 @@ export default function DocsPage() {
           </section>
         </RevealGroup>
 
-        {/* Heuristic rules */}
         <RevealGroup className="space-y-6">
           <section>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-900 mb-5">
-              Understanding Heuristic Rules
-            </h2>
-            <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
-              <ul className="space-y-4 text-sm text-stone-600">
+            <div className="flex items-center gap-2 font-head text-2xl font-semibold uppercase tracking-wide text-ink md:text-3xl">
+              Heuristic rules
+              <ChevronRight className="h-5 w-5 text-amber" />
+            </div>
+            <div className="panel mt-6 p-6">
+              <ul className="space-y-4 text-sm text-ink-soft">
                 <li>
-                  <span className="font-semibold text-stone-800">Accelerating demand + low stock</span> — surge markup to capture premium margin.
+                  <span className="font-semibold text-ink">Accelerating demand + low stock</span>{" "}
+                  — surge markup to capture premium margin.
                 </li>
                 <li>
-                  <span className="font-semibold text-stone-800">Decelerating demand + high stock</span> — defensive markdown, never below COGS + 5%.
+                  <span className="font-semibold text-ink">Decelerating demand + high stock</span>{" "}
+                  — defensive markdown, never below COGS + 5%.
                 </li>
                 <li>
-                  <span className="font-semibold text-stone-800">High stock only</span> — incremental markdown to turn inventory faster.
+                  <span className="font-semibold text-ink">High stock only</span> — incremental
+                  markdown to turn inventory faster.
                 </li>
                 <li>
-                  <span className="font-semibold text-stone-800">Low stock only</span> — small surge to slow depletion and avoid stockouts.
+                  <span className="font-semibold text-ink">Low stock only</span> — small surge to
+                  slow depletion and avoid stockouts.
                 </li>
                 <li>
-                  <span className="font-semibold text-stone-800">Stable conditions</span> — align toward target margin where competitors allow.
+                  <span className="font-semibold text-ink">Stable conditions</span> — align toward
+                  target margin where competitors allow.
                 </li>
               </ul>
-              <p className="text-xs text-stone-400 mt-5 font-mono">
-                Every recommendation respects a safety price floor of COGS + 5%, unless explicit liquidation is requested.
+              <p className="mt-5 font-mono text-xs text-muted">
+                Every recommendation respects a safety floor of COGS + 5%, unless explicit
+                liquidation is requested.
               </p>
             </div>
           </section>
         </RevealGroup>
 
-        {/* Market events */}
         <RevealGroup className="space-y-6">
           <section>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-900 mb-5">
-              Market Events & Simulation
-            </h2>
-            <p className="text-stone-500 text-sm md:text-base leading-relaxed mb-4">
-              Simulate geopolitical, currency, and supply shocks to stress-test pricing
-              before they hit your storefront. Send the active event context along with any
-              product analysis and the agent will fold it into its reasoning.
+            <div className="flex items-center gap-2 font-head text-2xl font-semibold uppercase tracking-wide text-ink md:text-3xl">
+              Market events & simulation
+              <ChevronRight className="h-5 w-5 text-amber" />
+            </div>
+            <p className="mt-6 mb-4 text-sm leading-relaxed text-ink-soft md:text-base">
+              Simulate geopolitical, currency, and supply shocks to stress-test
+              pricing before they hit your storefront. Pass the active event
+              context with any product analysis and the agent folds it into its
+              reasoning.
             </p>
             <CodeBlock
               code={`{
@@ -206,31 +200,37 @@ export default function DocsPage() {
           </section>
         </RevealGroup>
 
-        {/* API reference */}
         <RevealGroup className="space-y-6">
           <section>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-900 mb-5">
-              API Reference
-            </h2>
-            <div className="bg-white border border-stone-200 rounded-2xl shadow-sm overflow-hidden">
+            <div className="flex items-center gap-2 font-head text-2xl font-semibold uppercase tracking-wide text-ink md:text-3xl">
+              API reference
+              <ChevronRight className="h-5 w-5 text-amber" />
+            </div>
+            <div className="panel mt-6 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-stone-50 border-b border-stone-200 text-left">
-                    <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-stone-400">Method</th>
-                    <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-stone-400">Endpoint</th>
-                    <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-stone-400">Description</th>
+                  <tr className="border-b border-line bg-abyss text-left">
+                    <th className="px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                      Method
+                    </th>
+                    <th className="px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                      Endpoint
+                    </th>
+                    <th className="px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                      Description
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {endpoints.map((e) => (
-                    <tr key={e.method + e.path} className="border-b border-stone-100 last:border-0">
-                      <td className="px-4 py-3">
-                        <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full border ${methods[e.method as keyof typeof methods] || methods.GET}`}>
-                          {e.method}
-                        </span>
+                    <tr key={e.method + e.path} className="border-b border-line/50 last:border-0">
+                      <td className="whitespace-nowrap px-4 py-3">
+                        <MethodChip method={e.method} />
                       </td>
-                      <td className="px-4 py-3 font-mono text-xs text-stone-700 whitespace-nowrap">{e.path}</td>
-                      <td className="px-4 py-3 text-stone-500 text-xs">{e.desc}</td>
+                      <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-ink-soft">
+                        {e.path}
+                      </td>
+                      <td className="px-4 py-3 text-xs text-ink-soft">{e.desc}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -239,13 +239,10 @@ export default function DocsPage() {
           </section>
         </RevealGroup>
 
-        <div className="text-center pt-4">
-          <Link
-            to="/dashboard"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-xl font-semibold shadow-lg shadow-blue-600/20 transition-colors"
-          >
-            Open Dashboard
-            <ArrowRight className="w-4 h-4" />
+        <div className="pt-4 text-center">
+          <Link to="/dashboard" className="btn btn-primary">
+            Open the workspace
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

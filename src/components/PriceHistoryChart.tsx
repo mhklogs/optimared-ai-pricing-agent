@@ -10,7 +10,7 @@ interface PriceHistoryChartProps {
 
 const ENGINE_COLORS: Record<PriceHistoryPoint["engine"], string> = {
   "Heuristic": "#d97706", // amber-600
-  "Gemini AI": "#2563eb", // blue-600
+  "Gemini AI": "#FFC53D", // amber accent
   "Manual": "#78716c", // stone-500
 };
 
@@ -94,8 +94,8 @@ export default function PriceHistoryChart({ points, currencySymbol, productName 
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={`Price history for ${productName}`}>
         <defs>
           <linearGradient id="price-history-area" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#2563eb" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
+            <stop offset="0%" stopColor="#FFC53D" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#FFC53D" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -105,8 +105,8 @@ export default function PriceHistoryChart({ points, currencySymbol, productName 
           const gv = lo + range * t;
           return (
             <g key={idx}>
-              <line x1={PAD_L} y1={gy} x2={W - PAD_R} y2={gy} stroke="#e7e5e4" strokeWidth="1" strokeDasharray="3 4" />
-              <text x={PAD_L - 8} y={gy + 3.5} textAnchor="end" fontSize="10" fontFamily="JetBrains Mono, monospace" fill="#a8a29e">
+              <line x1={PAD_L} y1={gy} x2={W - PAD_R} y2={gy} stroke="rgba(140,160,200,0.16)" strokeWidth="1" strokeDasharray="3 4" />
+              <text x={PAD_L - 8} y={gy + 3.5} textAnchor="end" fontSize="10" fontFamily="JetBrains Mono, monospace" fill="#6a7593">
                 {fmt(gv)}
               </text>
             </g>
@@ -117,7 +117,7 @@ export default function PriceHistoryChart({ points, currencySymbol, productName 
         <path d={areaPath} fill="url(#price-history-area)" />
 
         {/* Main price line */}
-        <path d={linePath} fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d={linePath} fill="none" stroke="#FFC53D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
 
         {/* Data points with hover tooltips */}
         {points.map((pt, i) => (

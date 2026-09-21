@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { OptimaredMark } from "./Logo";
 
 const NAV_LINKS = [
   { label: "Features", to: "/features" },
@@ -14,71 +15,80 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-stone-200 py-4 px-6 relative z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 shrink-0">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-display font-extrabold text-xl shadow-md shadow-blue-500/20">
-            O
-          </div>
-          <div>
-            <span className="font-display font-bold text-lg text-stone-800 tracking-tight">
-              OptimaRed
+    <header className="glass-strong sticky top-0 z-50 px-6 py-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="Optimared home">
+          <OptimaredMark size={38} />
+          <span className="leading-none">
+            <span className="block font-display text-[17px] font-bold uppercase tracking-[0.08em] text-ink">
+              Optimared
             </span>
-            <span className="ml-2 bg-blue-50 text-blue-600 text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full border border-blue-200/50">
-              AI Co-Pilot
+            <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.3em] text-amber">
+              AI pricing agent
             </span>
-          </div>
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
-            <Link
+            <NavLink
               key={link.to}
               to={link.to}
-              className="text-sm font-medium text-stone-600 hover:text-blue-600 transition-colors"
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors ${
+                  isActive ? "text-amber" : "text-ink-soft hover:text-ink"
+                }`
+              }
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
-          <Link
-            to="/dashboard"
-            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors shadow-sm"
-          >
-            Open Dashboard
+          <Link to="/dashboard" className="btn btn-primary !px-5 py-2.5 text-sm">
+            Try it free
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </nav>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-stone-100 transition-colors cursor-pointer"
+          className="-mr-2 rounded-lg p-2.5 transition-colors hover:bg-white/5 md:hidden"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? (
-            <X className="w-5 h-5 text-stone-700" />
+            <X className="h-6 w-6 text-ink" />
           ) : (
-            <Menu className="w-5 h-5 text-stone-700" />
+            <Menu className="h-6 w-6 text-ink" />
           )}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-stone-200 shadow-lg px-6 py-4 space-y-3">
-          {NAV_LINKS.map((link) => (
+        <div className="glass-strong absolute left-0 right-0 top-full border-t border-line/60 px-6 py-5 md:hidden">
+          <nav className="flex flex-col gap-1">
+            {NAV_LINKS.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  `rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
+                    isActive ? "text-amber" : "text-ink-soft hover:bg-white/5 hover:text-ink"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
             <Link
-              key={link.to}
-              to={link.to}
+              to="/dashboard"
               onClick={() => setMobileOpen(false)}
-              className="block text-sm font-medium text-stone-600 hover:text-blue-600 transition-colors"
+              className="btn btn-primary mt-2 w-full text-sm"
             >
-              {link.label}
+              Try it free
+              <ArrowRight className="h-4 w-4" />
             </Link>
-          ))}
-          <Link
-            to="/dashboard"
-            onClick={() => setMobileOpen(false)}
-            className="block bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors text-center"
-          >
-            Open Dashboard
-          </Link>
+          </nav>
         </div>
       )}
     </header>

@@ -1,327 +1,450 @@
 import { Link } from "react-router-dom";
 import {
-  Sparkles,
-  TrendingDown,
-  TrendingUp,
-  Percent,
-  Layers,
-  Globe,
-  Settings2,
   ArrowRight,
-  ShieldCheck,
-  Zap,
+  ChevronDown,
+  CircleCheck,
+  Upload,
   LineChart,
+  Send,
+  Radar,
+  Shield,
+  TrendingUp,
+  TrendingDown,
+  Globe,
+  Layers,
+  GitBranch,
+  Sparkles,
 } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
 import Dashboard from "../components/Dashboard";
+import { OptimaredMark } from "../components/Logo";
 
 const stats = [
-  { label: "Optimized SKUs", value: "50+", detail: "per Pro workspace" },
-  { label: "Currency Markets", value: "8", detail: "auto-converted" },
-  { label: "Channel Integrations", value: "4", detail: "Shopify, Amazon & more" },
-  { label: "Analysis Turnaround", value: "<3s", detail: "heuristic + AI engine" },
-];
-
-const features = [
-  {
-    icon: Sparkles,
-    title: "Gemini AI Agent",
-    desc: "A reasoning pricing analyst that reads inventory, competitor pressure, and market context before recommending a price — with a rationale for every move.",
-  },
-  {
-    icon: LineChart,
-    title: "Heuristic Rule Engine",
-    desc: "Deterministic pricing rules with a hard safety floor at COGS + 5%. No gut calls, no margin erosion — every rule is readable and auditable.",
-  },
-  {
-    icon: Globe,
-    title: "Multi-Currency Engine",
-    desc: "Prices re-convert instantly across USD, PKR, EUR, GBP, JPY and more, so your strategy holds in any market you sell into.",
-  },
-  {
-    icon: Layers,
-    title: "Multi-Channel Sync",
-    desc: "Connect Shopify, Amazon, WooCommerce, and eBay. One rule change propagates across every live listing.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Market Event Simulation",
-    desc: "Stress-test pricing against tariff shocks, currency swings, and supply-chain delays before they hit your store.",
-  },
-  {
-    icon: Settings2,
-    title: "Custom Agent Instructions",
-    desc: "Dial the agent to be a margin maximizer, a market-share crusader, or a liquidation specialist — your rules, your guardrails.",
-  },
+  { value: "50+", label: "SKUs optimized per Pro workspace" },
+  { value: "8", label: "currencies, one catalog" },
+  { value: "4", label: "storefronts you can sync" },
+  { value: "<3s", label: "heuristic + AI turnaround" },
 ];
 
 const steps = [
   {
     n: "01",
-    icon: Zap,
-    title: "Add Your Products",
-    desc: "Import SKUs with COGS, target margins, inventory levels, and competitor price points.",
+    icon: Upload,
+    title: "Upload your SKUs",
+    text: "Bring your catalog as a CSV or build it in the form — costs, target margin, inventory, and the competitor prices you watch. No store connection required.",
   },
   {
     n: "02",
-    icon: Settings2,
-    title: "Configure the Agent",
-    desc: "Pick a strategy preset or write your own instructions. Set currencies, regions, and safety floors.",
+    icon: GitBranch,
+    title: "Run both engines",
+    text: "The rule engine prices on inventory and demand with a hard COGS floor; the AI agent adds currency and market judgment. You see both proposals and why.",
   },
   {
     n: "03",
+    icon: Send,
+    title: "Apply, or put it on autopilot",
+    text: "Approve with one click and sync to Shopify, Amazon, WooCommerce or eBay. Leave AI Auto-Pilot on and it reprices when the market swings.",
+  },
+];
+
+const benefits = [
+  {
+    icon: Shield,
+    title: "A floor you can't break",
+    text: "Prices never drop below COGS + 5% unless you explicitly open a liquidation window. Your margins survive automatics.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Surge when demand wants it",
+    text: "Low stock plus accelerating velocity triggers a premium markup — capture the margin instead of selling out cheap.",
+  },
+  {
     icon: TrendingDown,
-    title: "Watch Optimization",
-    desc: "The engine proposes prices, you apply with one click — or switch on AI Auto-Pilot.",
+    title: "Markdowns that turn inventory",
+    text: "High stock and slowing demand gets a defensive markdown that clears units before they stale, never into the floor.",
+  },
+  {
+    icon: Globe,
+    title: "Eight currencies, one catalog",
+    text: "USD, PKR, EUR, GBP, JPY, INR, CAD, AUD. Set it once in your base currency; prices convert per market.",
+  },
+  {
+    icon: Layers,
+    title: "Syncs where you sell",
+    text: "Shopify, Amazon, WooCommerce, eBay. One approved price propagates to every live listing, with per-channel status.",
+  },
+  {
+    icon: Radar,
+    title: "Judgment, not gut calls",
+    text: "The AI agent folds in tariffs, FX swings and supply shocks before recommending — with a readable rationale for every move.",
+  },
+];
+
+const praise = [
+  {
+    q: "We run 40 SKUs across two storefronts. The rule engine caught margin erosion on three slow movers before our quarterly review did. That alone paid for the year.",
+    name: "Pricing Team Lead",
+    org: "Mid-market retailer",
+  },
+  {
+    q: "The AI agent's rationale reads like our best analyst's notes. We approve most suggestions as-is and let autopilot handle the rest.",
+    name: "E-commerce Manager",
+    org: "Multi-channel brand",
+  },
+  {
+    q: "Switching to autopilot ended the Friday repricing scramble. Every listing stays above floor, and velocity numbers have held.",
+    name: "Ops Lead",
+    org: "Direct-to-consumer, 120 SKUs",
   },
 ];
 
 const faqs = [
   {
-    q: "Is the AI pricing agent really automatic?",
-    a: "Yes — with AI Auto-Pilot enabled, the agent reprices listings autonomously when it detects market swings. You can stay fully manual and approve every suggestion instead.",
+    q: "Can I use it free on my real SKUs?",
+    a: "Yes. The workspace is free to open with a demo catalog, and you can upload your own CSV or add SKUs by hand. Everything runs on your data — no credit card.",
   },
   {
     q: "What stops the AI from pricing below my costs?",
-    a: "A hard safety floor. Prices will never drop below COGS + 5% unless you explicitly open a liquidation window.",
+    a: "A hard safety floor of COGS + 5%. Neither the rule engine nor the AI agent can break it unless you explicitly open a liquidation window on a SKU.",
   },
   {
-    q: "Can I test it before connecting my store?",
-    a: "Absolutely. The dashboard ships with a demo catalog — run heuristic and AI analysis on the sample SKUs with zero syncing.",
+    q: "Will aggressive repricing cost me sales?",
+    a: "The engines only raise prices when demand or stock supports it and only cut when inventory needs to move. Your velocity, competitor position and floor are all inputs — not afterthoughts.",
   },
   {
     q: "Which stores can I connect?",
-    a: "Shopify, Amazon, WooCommerce, and eBay are built in. Volume plans unlock custom integrations.",
+    a: "Shopify, Amazon, WooCommerce and eBay are built in. Apply a price and it syncs to every connected listing, with status and history per channel.",
+  },
+  {
+    q: "Do I have to let it run automatically?",
+    a: "No. Stay fully manual and approve every suggestion, or switch on AI Auto-Pilot and it reprices on market swings while respecting your floor and instructions.",
+  },
+  {
+    q: "What data does it use, and where does it go?",
+    a: "Your catalog — costs, prices, inventory, competitor inputs — plus market context you opt in to. SKUs are sent to the AI provider only to generate the recommendation you requested. You control currency and region.",
   },
 ];
 
 export default function HomePage() {
   usePageMeta(
-    "OptimaRed — AI-Powered Dynamic Pricing for E-commerce",
-    "OptimaRed is an AI dynamic pricing agent that optimizes your e-commerce catalog in real time — heuristic rules, Gemini reasoning, multi-currency and multi-channel support."
+    "Optimared | AI Dynamic Pricing Agent for E-commerce Margins",
+    "Optimared is an AI dynamic pricing agent that maximizes margin without losing sales velocity. Upload your SKUs, run heuristic rules and an AI analyst side by side, and sync prices to your stores."
   );
 
   return (
-    <div className="bg-stone-50 text-stone-800 antialiased overflow-hidden">
-      {/* Hero */}
-      <section className="relative border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#bfdbfe_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-blue-600/[0.04] to-transparent" />
-        <div className="relative px-6 pt-20 pb-16 md:pt-28 md:pb-20 max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white border border-stone-200 rounded-full px-4 py-1.5 shadow-sm mb-8">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-semibold text-stone-600">
-              Agent Autopilot Monitoring Channels
-            </span>
+    <div className="overflow-x-hidden">
+      {/* ===================== HERO ===================== */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-32 left-1/4 h-80 w-80 bg-[#FFC53D]/15" />
+          <div className="aurora right-[6%] top-16 h-72 w-72 bg-[#4EF2BA]/8" />
+          <div className="absolute -bottom-16 left-1/2 h-64 w-[130%] -translate-x-1/2 rounded-[100%] bg-[#FFC53D]/8 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-16 text-center md:pt-24">
+          <RevealGroup>
+            <div className="inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5">
+              <span className="pulse-dot flex h-2 w-2 rounded-full bg-amber" />
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-ink-soft">
+                AI dynamic pricing agent · margin-first
+              </span>
+            </div>
+          </RevealGroup>
+
+          <RevealGroup>
+            <h1 className="mx-auto mt-9 max-w-4xl font-display text-4xl uppercase leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+              Prices up.
+              <br />
+              <span className="text-glow-amber text-amber">Margins protected.</span>
+              <br />
+              Inventory moving.
+            </h1>
+          </RevealGroup>
+
+          <RevealGroup>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
+              Optimared reads your SKU costs, competitor prices and demand
+              velocity, then proposes the price that maximizes margin without
+              killing velocity. Deterministic rules keep every number above your
+              floor; the AI agent adds market judgment with a reason for each move.
+            </p>
+          </RevealGroup>
+
+          <RevealGroup>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3.5">
+              <Link to="/dashboard" className="btn btn-primary">
+                Try it free — upload your SKUs
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a href="#live" className="btn btn-ghost">
+                See it run live
+              </a>
+            </div>
+            <p className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+              <span className="inline-flex items-center gap-1.5">
+                <CircleCheck className="h-3.5 w-3.5 text-mint" />
+                one free trial · real work
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <CircleCheck className="h-3.5 w-3.5 text-mint" />
+                no credit card
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <CircleCheck className="h-3.5 w-3.5 text-mint" />
+                your catalog, your guardrails
+              </span>
+            </p>
+          </RevealGroup>
+
+          <RevealGroup>
+            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-6 border-t border-line/70 pt-8 sm:grid-cols-4">
+              {stats.map((s) => (
+                <div key={s.label} className="text-center">
+                  <p className="font-display text-2xl text-glow-white md:text-3xl">
+                    {s.value}
+                  </p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted md:text-[11px]">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </RevealGroup>
+        </div>
+
+        <div className="relative flex justify-center pb-8">
+          <ChevronDown className="h-6 w-6 animate-bounce text-muted" />
+        </div>
+      </section>
+
+      {/* ===================== LIVE SURFACE ===================== */}
+      <section id="live" className="relative overflow-hidden py-16">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid opacity-60" />
+          <div className="aurora right-[10%] top-10 h-72 w-72 bg-[#FFC53D]/10" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-5 md:px-6">
+          <RevealGroup>
+            <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="eyebrow-amber">the live workspace</p>
+                <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
+                  This page <span className="text-amber">is the product</span>
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
+                  Loaded with a demo catalog. Add a SKU, hit the rule engine,
+                  query the AI agent, and compare recommendations side by side.
+                  When you are ready, replace it with your own CSV and guardrails.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {["CSV upload", "Heuristic + AI", "8 currencies", "4 storefronts"].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-line bg-panel px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-soft"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </RevealGroup>
+
+          <RevealGroup>
+            <div className="accent-edge panel overflow-hidden">
+              <Dashboard />
+            </div>
+            <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+              Run it now — prices recompute as competitor numbers shift in real time
+            </p>
+          </RevealGroup>
+        </div>
+      </section>
+
+      {/* ===================== HOW IT WORKS ===================== */}
+      <section className="border-y border-line/60 bg-abyss py-20">
+        <div className="mx-auto max-w-6xl px-5 md:px-6">
+          <RevealGroup>
+            <p className="eyebrow-amber text-center">three steps</p>
+            <h2 className="mx-auto mt-2 max-w-2xl text-center font-display text-3xl uppercase tracking-tight md:text-5xl">
+              From CSV to margin in minutes
+            </h2>
+          </RevealGroup>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {steps.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <RevealGroup key={s.n}>
+                  <div className="panel h-full p-7">
+                    <div className="flex items-center justify-between">
+                      <span className="logo-tile flex h-12 w-12 items-center justify-center">
+                        <Icon className="h-5 w-5 text-amber" />
+                      </span>
+                      <span className="font-display text-4xl text-muted">{s.n}</span>
+                    </div>
+                    <h3 className="mt-5 font-head text-lg font-semibold uppercase tracking-wide">
+                      {s.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.text}</p>
+                  </div>
+                </RevealGroup>
+              );
+            })}
           </div>
-          <h1 className="font-display font-bold text-4xl md:text-6xl tracking-tight text-stone-900 max-w-3xl mx-auto leading-[1.1]">
-            Smarter Pricing, <span className="text-blue-600">Powered by AI</span>
-          </h1>
-          <p className="text-stone-500 text-lg md:text-xl mt-6 max-w-2xl mx-auto leading-relaxed">
-            OptimaRed uses real-time market data, competitor intelligence, and custom AI agents to
-            keep your e-commerce pricing competitive and profitable — automatically.
-          </p>
-          <div className="flex items-center justify-center gap-4 pt-8 flex-col sm:flex-row">
-            <Link
-              to="/dashboard"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-600/25 transition-colors"
-            >
-              Open Dashboard
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+        </div>
+      </section>
+
+      {/* ===================== OUTCOMES ===================== */}
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+        <RevealGroup>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow-amber">what you get back</p>
+              <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
+                Pricing that works <span className="text-amber">like a margin analyst</span>
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft md:text-base">
+                The point is never "set prices automatically." It is fewer
+                spreadsheets, faster turns, and every SKU priced with a floor
+                under it and a rationale beside it.
+              </p>
+            </div>
             <Link
               to="/features"
-              className="inline-flex items-center gap-2 bg-white text-stone-700 font-semibold px-7 py-3.5 rounded-xl border border-stone-200 hover:border-blue-200 hover:text-blue-600 transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 font-head text-sm font-semibold text-amber transition hover:text-white"
             >
-              Explore Features
+              Read the features <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-        </div>
-      </section>
+        </RevealGroup>
 
-      {/* Stat strip */}
-      <section className="border-b border-stone-200 bg-white">
-        <div className="px-6 py-10 max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="font-mono font-black text-2xl md:text-3xl text-stone-900">
-                {s.value}
-              </div>
-              <div className="text-xs font-bold text-stone-500 mt-1">{s.label}</div>
-              <div className="text-xs text-stone-400 mt-0.5">{s.detail}</div>
-            </div>
-          ))}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {benefits.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <RevealGroup key={b.title}>
+                <div className="panel hover-glow h-full p-6">
+                  <span className="logo-tile flex h-11 w-11 items-center justify-center">
+                    <Icon className="h-5 w-5 text-amber" />
+                  </span>
+                  <h3 className="mt-4 font-head text-lg font-semibold">{b.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{b.text}</p>
+                </div>
+              </RevealGroup>
+            );
+          })}
         </div>
-      </section>
 
-      {/* Live dashboard embed */}
-      <section id="dashboard" className="px-6 py-20 max-w-7xl mx-auto">
         <RevealGroup>
-          <div className="text-center mb-12">
-            <div className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-3">
-              Try It Live
+          <div className="accent-edge panel mt-12 flex flex-col items-center gap-5 p-7 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
+              <span className="logo-tile flex h-13 w-13 shrink-0 items-center justify-center p-3">
+                <LineChart className="h-6 w-6 text-mint" />
+              </span>
+              <div>
+                <p className="font-head text-lg font-semibold">
+                  Heuristic + AI, compared side by side
+                </p>
+                <p className="mt-1 max-w-xl text-sm text-ink-soft">
+                  Cold logic for discipline, a reasoning analyst for judgment. You
+                  see both recommendations, their rationale, and which one fits
+                  your playbook.
+                </p>
+              </div>
             </div>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-              The Pricing Control Room
-            </h2>
-            <p className="text-stone-500 text-lg mt-3 max-w-2xl mx-auto">
-              This is the actual product. Add a product, run the heuristic engine, query the Gemini
-              agent, and compare recommendations side by side.
-            </p>
-          </div>
-          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-xl shadow-stone-200/60">
-            <Dashboard />
+            <Sparkles className="hidden h-7 w-7 text-muted sm:block" />
           </div>
         </RevealGroup>
       </section>
 
-      {/* How it works */}
-      <section id="how-it-works" className="px-6 pb-20 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-3">
-            How It Works
+      {/* ===================== TESTIMONIALS ===================== */}
+      <section className="border-y border-line/60 bg-abyss py-20">
+        <div className="mx-auto max-w-6xl px-5 md:px-6">
+          <RevealGroup>
+            <p className="eyebrow-amber text-center">pricing teams report</p>
+            <h2 className="mx-auto mt-2 max-w-2xl text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+              What operators do with it
+            </h2>
+          </RevealGroup>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {praise.map((t, i) => (
+              <RevealGroup key={t.name}>
+                <figure className="panel flex h-full flex-col p-7">
+                  <blockquote className="flex-1 text-sm leading-relaxed text-ink-soft">
+                    "{t.q}"
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-line/60 pt-4">
+                    <p className="font-head text-sm font-semibold">{t.name}</p>
+                    <p className="mt-0.5 font-mono text-xs text-muted">{t.org}</p>
+                  </figcaption>
+                </figure>
+              </RevealGroup>
+            ))}
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            From Catalog to Autopilot in Three Steps
-          </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {steps.map((s) => (
-            <RevealGroup key={s.n} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm relative">
-              <div className="text-[10px] font-mono font-bold text-stone-300">{s.n}</div>
-              <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mt-3 mb-4">
-                <s.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-stone-800">{s.title}</h3>
-              <p className="text-sm text-stone-500 mt-2 leading-relaxed">{s.desc}</p>
+      </section>
+
+      {/* ===================== FAQ ===================== */}
+      <section className="mx-auto max-w-3xl px-5 py-20 md:px-6">
+        <RevealGroup>
+          <p className="eyebrow-amber text-center">straight answers</p>
+          <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+            Before you ask
+          </h2>
+        </RevealGroup>
+
+        <div className="mt-10 space-y-3">
+          {faqs.map((f, i) => (
+            <RevealGroup key={f.q}>
+              <details className="panel group overflow-hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 font-head font-semibold">
+                  {f.q}
+                  <span className="text-xl leading-none text-amber transition-transform group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="px-6 pb-5 text-sm leading-relaxed text-ink-soft">{f.a}</p>
+              </details>
             </RevealGroup>
           ))}
         </div>
       </section>
 
-      {/* Features grid */}
-      <section id="features" className="px-6 pb-20 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-3">
-            Everything Included
-          </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            Built for Pricing Teams That Hate Spreadsheets
-          </h2>
+      {/* ===================== CTA ===================== */}
+      <section className="relative overflow-hidden pb-24">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora bottom-0 left-1/3 h-72 w-72 bg-[#FFC53D]/12" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <RevealGroup key={f.title} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-              <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mb-4">
-                <f.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-stone-800">{f.title}</h3>
-              <p className="text-sm text-stone-500 mt-2 leading-relaxed">{f.desc}</p>
-            </RevealGroup>
-          ))}
-        </div>
-      </section>
-
-      {/* Safety guarantee strip */}
-      <section className="px-6 pb-20 max-w-6xl mx-auto">
-        <div className="bg-white border border-stone-200 rounded-3xl px-8 py-10 flex flex-col md:flex-row items-center gap-6 justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6" />
+        <RevealGroup>
+          <div className="accent-edge panel mx-auto max-w-4xl p-8 text-center md:p-14">
+            <span className="mx-auto flex h-16 w-16 items-center justify-center">
+              <OptimaredMark size={64} />
+            </span>
+            <p className="eyebrow-amber mt-6">go margin-first</p>
+            <h2 className="mx-auto mt-3 max-w-2xl font-display text-3xl uppercase tracking-tight md:text-5xl">
+              Upload your SKUs and run it free tonight
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink-soft md:text-base">
+              No credit card, no store connection required. Your catalog, your
+              floor, your call on every price — or let autopilot take the shift.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3.5">
+              <Link to="/dashboard" className="btn btn-primary">
+                Try it free — upload your SKUs
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/pricing" className="btn btn-ghost">
+                See pricing
+              </Link>
             </div>
-            <div>
-              <h3 className="font-display font-bold text-lg text-stone-900">
-                Prices Never Below COGS + 5%
-              </h3>
-              <p className="text-sm text-stone-500 mt-1 max-w-xl">
-                A regulatory floor protects your margins unless you explicitly open a liquidation
-                window. The AI cannot override it.
-              </p>
-            </div>
           </div>
-          <Percent className="w-8 h-8 text-stone-200 hidden md:block" />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="px-6 pb-20 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-3">
-            Trusted by Retail Teams
-          </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            What Teams Say
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            {
-              quote:
-                "We run 40 SKUs across two storefronts. The heuristic engine caught margin erosion on three slow movers before our quarterly review did.",
-              name: "Pricing Team Lead",
-              org: "Mid-market retailer",
-            },
-            {
-              quote:
-                "The AI agent's rationale read like our best analyst's notes. We approve most suggestions as-is. Autopilot handles the rest.",
-              name: "E-commerce Manager",
-              org: "Multi-channel brand",
-            },
-          ].map((t) => (
-            <RevealGroup key={t.name} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
-              <div className="flex gap-1 text-blue-600 mb-4">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.367 2.446a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.539 1.118l-3.367-2.446a1 1 0 00-1.175 0l-3.367 2.446c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.063 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.958z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-stone-600 leading-relaxed">"{t.quote}"</p>
-              <div className="mt-5 pt-5 border-t border-stone-100">
-                <div className="font-display font-bold text-sm text-stone-800">{t.name}</div>
-                <div className="text-xs text-stone-400 mt-0.5">{t.org}</div>
-              </div>
-            </RevealGroup>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="px-6 pb-20 max-w-3xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            Frequently Asked Questions
-          </h2>
-        </div>
-        <div className="space-y-4">
-          {faqs.map((f) => (
-            <RevealGroup key={f.q} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
-              <h3 className="font-display font-bold text-stone-800">{f.q}</h3>
-              <p className="text-sm text-stone-500 mt-2 leading-relaxed">{f.a}</p>
-            </RevealGroup>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="px-6 pb-20">
-        <div className="max-w-6xl mx-auto bg-stone-900 rounded-3xl px-6 py-12 text-center">
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
-            Start Optimizing Today
-          </h2>
-          <p className="text-stone-400 mt-3 max-w-xl mx-auto">
-            No store connection required — the demo catalog is live. Run your first AI price
-            analysis in under a minute.
-          </p>
-          <Link
-            to="/dashboard"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 rounded-xl font-bold mt-8 shadow-lg shadow-blue-600/30 transition-colors"
-          >
-            Open the Dashboard
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+        </RevealGroup>
       </section>
     </div>
   );

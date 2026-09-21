@@ -125,7 +125,7 @@ export default function PricingVisualizer({
           className="absolute group z-20 top-1/2 transform -translate-y-1/2 -translate-x-1/2"
           style={{ left: `${getPercent(current_price)}%` }}
         >
-          <div className="w-4 h-4 rounded-full bg-stone-800 border-2 border-white shadow flex items-center justify-center" />
+          <div className="w-4 h-4 rounded-full bg-amber border-2 border-white shadow flex items-center justify-center" />
           <div className="absolute bg-stone-800 text-white text-xs py-0.5 px-1.5 rounded shadow pointer-events-none -top-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap border border-stone-700">
             Active: {formatCurrency(current_price)}
           </div>

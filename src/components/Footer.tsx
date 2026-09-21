@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import OptimaredLogo from "./Logo";
 
-const FOOTER_LINKS = [
+const PRODUCT = [
   { label: "Features", to: "/features" },
   { label: "Pricing", to: "/pricing" },
   { label: "Docs", to: "/docs" },
+  { label: "Try it free", to: "/dashboard" },
+];
+
+const COMPANY = [
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
   { label: "Privacy", to: "/privacy" },
@@ -11,37 +17,64 @@ const FOOTER_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-50 border-t border-stone-200 py-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-display font-extrabold text-sm shadow-md shadow-blue-500/20">
-              O
-            </div>
-            <span className="font-display font-bold text-base text-stone-800 tracking-tight">
-              OptimaRed
-            </span>
+    <footer className="border-t border-line/70 bg-abyss px-6 py-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.6fr_1fr_1fr] md:items-start">
+          <div>
+            <OptimaredLogo markSize={44} />
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
+              AI dynamic pricing that maximizes margin without killing sales
+              velocity. Heuristic rules keep you above your floor; the AI agent
+              adds market judgment.
+            </p>
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+              <span className="pulse-dot h-2 w-2 rounded-full bg-amber" />
+              Runs on your catalog
+            </p>
           </div>
-          <p className="text-sm text-stone-500 leading-relaxed max-w-xs">
-            AI-Powered Dynamic Pricing for E-commerce
-          </p>
+
+          <nav>
+            <p className="font-head text-sm font-semibold uppercase tracking-[0.2em] text-ink">
+              Product
+            </p>
+            <ul className="mt-4 space-y-3">
+              {PRODUCT.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-amber"
+                  >
+                    {l.to === "/dashboard" && <ArrowRight className="h-3.5 w-3.5" />}
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav>
+            <p className="font-head text-sm font-semibold uppercase tracking-[0.2em] text-ink">
+              Company
+            </p>
+            <ul className="mt-4 space-y-3">
+              {COMPANY.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-ink-soft transition-colors hover:text-amber"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-          {FOOTER_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="text-sm text-stone-500 hover:text-blue-600 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="text-right">
-          <p className="text-xs text-stone-400">
-            &copy; 2026 OptimaRed. All rights reserved.
+        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-line/60 pt-6 md:flex-row md:items-center">
+          <p className="text-xs text-muted">&copy; 2026 Optimared. All rights reserved.</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            Margin-first pricing · no credit card to start
           </p>
         </div>
       </div>

@@ -7,6 +7,7 @@ import {
   Linkedin,
   CheckCircle2,
   AlertCircle,
+  Send,
 } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
@@ -29,7 +30,10 @@ type FormState = {
 type Status = { type: "success" | "error"; text: string } | null;
 
 export default function ContactPage() {
-  usePageMeta("Contact — OptimaRed");
+  usePageMeta(
+    "Contact — Optimared",
+    "Questions about Optimared, integrations, or the AI pricing roadmap — we read everything."
+  );
 
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -70,49 +74,52 @@ export default function ContactPage() {
     }
   };
 
-  const inputClass =
-    "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-500 transition";
+  const labelClass = "mb-2 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted";
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased">
+    <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#e7e5e4_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative px-6 py-20 md:py-24 max-w-6xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight text-stone-900">
-            Get in Touch
+      <section className="relative overflow-hidden border-b border-line/60">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-24 right-[18%] h-64 w-64 bg-[#FFC53D]/12" />
+        </div>
+        <div className="relative px-6 py-20 text-center md:py-24">
+          <p className="eyebrow-amber">human on the other end</p>
+          <h1 className="mt-4 font-display text-4xl uppercase tracking-tight md:text-5xl">
+            Get in touch
           </h1>
-          <p className="text-stone-500 text-lg mt-4 max-w-2xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-ink-soft">
             Questions about pricing, integrations, or the agent roadmap — we read everything.
           </p>
         </div>
       </section>
 
       {/* Contact */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-        <RevealGroup className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+        <RevealGroup className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Form */}
-          <form onSubmit={handleSubmit} className="lg:col-span-2 bg-white border border-stone-200 rounded-2xl p-7 shadow-sm">
+          <form onSubmit={handleSubmit} className="panel p-7 lg:col-span-2">
             {status && (
               <div
-                className={`mb-6 flex items-start gap-2.5 px-4 py-3 rounded-xl text-sm font-medium border ${
+                className={`mb-6 flex items-start gap-2.5 rounded-xl border px-4 py-3 text-sm font-medium ${
                   status.type === "success"
-                    ? "bg-emerald-50 border-emerald-200 text-emerald-700"
-                    : "bg-rose-50 border-rose-200 text-rose-700"
+                    ? "border-mint/30 bg-mint/10 text-mint"
+                    : "border-rose/30 bg-[#ff586e]/10 text-[#ff9aab]"
                 }`}
               >
                 {status.type === "success" ? (
-                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
                 ) : (
-                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
                 )}
                 {status.text}
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-widest text-stone-400 mb-2" htmlFor="name">
+                <label className={labelClass} htmlFor="name">
                   Name
                 </label>
                 <input
@@ -123,11 +130,11 @@ export default function ContactPage() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Jane Doe"
-                  className={inputClass}
+                  className="field"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-widest text-stone-400 mb-2" htmlFor="email">
+                <label className={labelClass} htmlFor="email">
                   Email
                 </label>
                 <input
@@ -138,30 +145,26 @@ export default function ContactPage() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="jane@store.com"
-                  className={inputClass}
+                  className="field"
                 />
               </div>
             </div>
 
             <div className="mt-5">
-              <label className="block text-[11px] font-bold uppercase tracking-widest text-stone-400 mb-2" htmlFor="subject">
+              <label className={labelClass} htmlFor="subject">
                 Subject
               </label>
-              <select
-                id="subject"
-                name="subject"
-                value={form.subject}
-                onChange={handleChange}
-                className={inputClass}
-              >
+              <select id="subject" name="subject" value={form.subject} onChange={handleChange} className="field">
                 {subjects.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                  <option key={s} className="bg-panel text-ink" value={s}>
+                    {s}
+                  </option>
                 ))}
               </select>
             </div>
 
             <div className="mt-5">
-              <label className="block text-[11px] font-bold uppercase tracking-widest text-stone-400 mb-2" htmlFor="message">
+              <label className={labelClass} htmlFor="message">
                 Message
               </label>
               <textarea
@@ -171,57 +174,76 @@ export default function ContactPage() {
                 rows={6}
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Tell us how OptimaRed can help your store..."
-                className={`${inputClass} resize-none`}
+                placeholder="Tell us how Optimared can help your store..."
+                className="field resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={submitting}
-              className="mt-6 w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-blue-600/20 transition-colors"
+              className="btn btn-primary mt-6 w-full sm:w-auto"
             >
-              {submitting ? "Sending..." : "Send Message"}
+              {submitting ? "Sending..." : "Send message"}
+              {!submitting && <Send className="h-4 w-4" />}
             </button>
           </form>
 
           {/* Side info */}
           <div className="space-y-5">
-            <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
+            <div className="panel p-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
-                  <Mail className="w-5 h-5" />
-                </div>
+                <span className="logo-tile flex h-10 w-10 shrink-0 items-center justify-center">
+                  <Mail className="h-5 w-5 text-amber" />
+                </span>
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-stone-400">Email</div>
-                  <div className="font-mono text-sm text-stone-700">hello@optimared.ai</div>
+                  <div className="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                    Email
+                  </div>
+                  <div className="font-mono text-sm text-ink-soft">hello@optimared.ai</div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
+            <div className="panel p-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
-                  <Clock className="w-5 h-5" />
-                </div>
+                <span className="logo-tile flex h-10 w-10 shrink-0 items-center justify-center">
+                  <Clock className="h-5 w-5 text-amber" />
+                </span>
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-stone-400">Response Time</div>
-                  <div className="text-sm text-stone-700">Within 24 hours</div>
+                  <div className="font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                    Response time
+                  </div>
+                  <div className="text-sm text-ink-soft">Within 24 hours</div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-4">Socials</div>
+            <div className="panel p-6">
+              <div className="mb-4 font-mono text-[10px] font-bold uppercase tracking-widest text-muted">
+                Socials
+              </div>
               <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 rounded-xl bg-stone-900 text-white flex items-center justify-center hover:bg-blue-600 transition-colors" aria-label="Twitter">
-                  <Twitter className="w-5 h-5" />
+                <a
+                  href="#"
+                  className="panel flex h-10 w-10 items-center justify-center hover:border-amber/50 hover:text-amber"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-5 w-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-stone-900 text-white flex items-center justify-center hover:bg-blue-600 transition-colors" aria-label="GitHub">
-                  <Github className="w-5 h-5" />
+                <a
+                  href="#"
+                  className="panel flex h-10 w-10 items-center justify-center hover:border-amber/50 hover:text-amber"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-stone-900 text-white flex items-center justify-center hover:bg-blue-600 transition-colors" aria-label="LinkedIn">
-                  <Linkedin className="w-5 h-5" />
+                <a
+                  href="#"
+                  className="panel flex h-10 w-10 items-center justify-center hover:border-amber/50 hover:text-amber"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
                 </a>
               </div>
             </div>

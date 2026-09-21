@@ -19,8 +19,8 @@ const features = [
   {
     icon: LineChart,
     title: "Heuristic Rule Engine",
-    detail: "Deterministic, rule-based pricing",
-    body: "A programmatic engine evaluates inventory levels, demand velocity, and competitor benchmarks to propose prices with hard safety floors. Every recommendation is deterministic: same inputs, same output, fully auditable.",
+    detail: "deterministic · auditable",
+    body: "A programmatic engine evaluates inventory levels, demand velocity, and competitor benchmarks to propose prices with hard safety floors. Same inputs, same output — fully readable and repeatable.",
     points: [
       "Surge pricing on low stock + accelerating demand",
       "Markdowns that never breach COGS + 5%",
@@ -29,11 +29,11 @@ const features = [
   },
   {
     icon: Sparkles,
-    title: "Gemini AI Cognitive Agent",
-    detail: "Reasoning LLM pricing analyst",
-    body: "The AI agent absorbs your custom instructions — premium maximizer, market-share crusader, or liquidation specialist — then reads currency movements, geopolitical events, and supply-chain context before recommending a price.",
+    title: "Gemini AI Pricing Analyst",
+    detail: "reasoning LLM · structured output",
+    body: "The AI agent absorbs your pricing philosophy — premium maximizer, market-share crusader, or liquidation specialist — then reads currency movements, tariffs and supply context before recommending a price.",
     points: [
-      "Custom system instructions per workspace",
+      "Custom instructions per workspace",
       "Structured JSON output, schema-validated",
       "Currency + tariff + event awareness",
     ],
@@ -42,7 +42,7 @@ const features = [
     icon: Globe,
     title: "Multi-Currency Engine",
     detail: "8 currencies, instant conversion",
-    body: "Set your catalog once in USD and let OptimaRed convert recommendations on the fly. USD, PKR, EUR, GBP, JPY, INR, CAD, and AUD — switch markets without touching SKUs.",
+    body: "Set your catalog once in USD and let Optimared convert recommendations on the fly across USD, PKR, EUR, GBP, JPY, INR, CAD and AUD. Switch markets without touching SKUs.",
     points: [
       "Real-time display conversion",
       "Per-region pricing strategy",
@@ -52,8 +52,8 @@ const features = [
   {
     icon: Layers,
     title: "Multi-Channel Sync",
-    detail: "Shopify, Amazon, WooCommerce, eBay",
-    body: "Each product carries its connected storefronts. When you apply a price, it propagates across every live listing — with sync status and last-synced time for every channel.",
+    detail: "Shopify · Amazon · WooCommerce · eBay",
+    body: "Each product carries its connected storefronts. Apply a price and it propagates across every live listing, with sync status and last-synced time per channel.",
     points: [
       "One-click price application",
       "Per-channel status & history",
@@ -63,8 +63,8 @@ const features = [
   {
     icon: TrendingUp,
     title: "Market Event Simulation",
-    detail: "Stress-test before it hits",
-    body: "Simulate tariff shocks, Suez-style shipping crises, and currency volatility to see how your pricing would respond — before real markets move on you.",
+    detail: "stress-test before it hits",
+    body: "Simulate tariff shocks, shipping crises and currency swings to see how your pricing would respond — before real markets move on you.",
     points: [
       "Tariff, shipping, and FX scenarios",
       "Volatility timeline visualization",
@@ -74,8 +74,8 @@ const features = [
   {
     icon: Settings2,
     title: "Custom Agent Instructions",
-    detail: "Your strategy, your guardrails",
-    body: "Presets for balance, premium margin, market share, and liquidation — or write free-form instructions the Gemini agent must follow as its primary directive.",
+    detail: "your strategy, your guardrails",
+    body: "Presets for balance, premium margin, market share and liquidation — or write free-form instructions the AI analyst must follow as its primary directive.",
     points: [
       "4 battle-tested strategy presets",
       "Free-form prompt override",
@@ -98,110 +98,126 @@ const extras = [
   {
     icon: Bell,
     title: "System Notifications",
-    desc: "Market events, low-stock alerts, and AI suggestions pushed right in the dashboard.",
+    desc: "Market events, low-stock alerts, and AI suggestions pushed in the dashboard.",
   },
   {
     icon: Cpu,
-    title: "Heuristic + AI Compare",
-    desc: "Side-by-side proposals let you see what cold logic and cognitive AI each recommend.",
+    title: "Heuristic vs AI Compare",
+    desc: "Side-by-side proposals show what cold logic and cognitive AI each recommend.",
   },
 ];
 
 export default function FeaturesPage() {
   usePageMeta(
-    "Features — OptimaRed",
-    "Explore OptimaRed's feature set: heuristic rule engine, Gemini AI pricing agent, multi-currency engine, multi-channel sync, market simulations, and custom agent instructions."
+    "Features — Optimared",
+    "Optimared features: heuristic rule engine, Gemini AI pricing analyst, multi-currency engine, multi-channel sync, market simulations, and custom agent instructions."
   );
 
   return (
-    <div className="bg-stone-50 text-stone-800 antialiased overflow-hidden">
+    <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#e7e5e4_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative px-6 py-20 md:py-28 max-w-6xl mx-auto text-center">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-4">
-            Feature Overview
-          </div>
-          <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight text-stone-900 max-w-3xl mx-auto leading-[1.1]">
-            Built for Pricing Teams
+      <section className="relative overflow-hidden border-b border-line/60">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-24 left-1/4 h-72 w-72 bg-[#FFC53D]/13" />
+          <div className="aurora right-[8%] top-12 h-64 w-64 bg-[#4DE3FF]/7" />
+        </div>
+        <div className="relative px-6 py-20 text-center md:py-28">
+          <p className="eyebrow-amber">feature overview</p>
+          <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl uppercase tracking-tight md:text-6xl">
+            Built for <span className="text-amber">pricing operators</span>
           </h1>
-          <p className="text-stone-500 text-lg md:text-xl mt-5 max-w-2xl mx-auto leading-relaxed">
-            A rule engine for discipline, an AI agent for judgment, and full transparency between
-            them.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">
+            A rule engine for discipline, an AI analyst for judgment, and full
+            transparency between them. Every price move comes with a reason and
+            a floor beneath it.
           </p>
         </div>
       </section>
 
       {/* Main features */}
-      <section className="px-6 py-20 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {features.map((f) => (
-            <RevealGroup key={f.title} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-                  <f.icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="font-display font-bold text-xl text-stone-900">{f.title}</h2>
-                  <div className="text-xs font-bold uppercase tracking-widest text-stone-400 mt-0.5">
-                    {f.detail}
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {features.map((f) => {
+            const Icon = f.icon;
+            return (
+              <RevealGroup key={f.title}>
+                <div className="panel h-full p-8">
+                  <div className="flex items-center gap-4">
+                    <span className="logo-tile flex h-12 w-12 shrink-0 items-center justify-center">
+                      <Icon className="h-6 w-6 text-amber" />
+                    </span>
+                    <div>
+                      <h2 className="font-head text-xl font-semibold uppercase tracking-wide">
+                        {f.title}
+                      </h2>
+                      <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+                        {f.detail}
+                      </p>
+                    </div>
                   </div>
+                  <p className="mt-5 text-sm leading-relaxed text-ink-soft">{f.body}</p>
+                  <ul className="mt-5 space-y-2.5">
+                    {f.points.map((p) => (
+                      <li key={p} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-              <p className="text-sm text-stone-500 leading-relaxed">{f.body}</p>
-              <ul className="mt-5 space-y-2.5">
-                {f.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-sm text-stone-600">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </RevealGroup>
-          ))}
+              </RevealGroup>
+            );
+          })}
         </div>
       </section>
 
       {/* Extras */}
-      <section className="px-6 pb-20 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-3">
-            More to Love
+      <section className="border-y border-line/60 bg-abyss py-20">
+        <div className="mx-auto max-w-6xl px-5 md:px-6">
+          <RevealGroup>
+            <p className="eyebrow-amber text-center">more to love</p>
+            <h2 className="mt-2 text-center font-display text-3xl uppercase tracking-tight md:text-4xl">
+              The details matter
+            </h2>
+          </RevealGroup>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {extras.map((e) => {
+              const Icon = e.icon;
+              return (
+                <RevealGroup key={e.title}>
+                  <div className="panel h-full p-6">
+                    <span className="logo-tile flex h-10 w-10 items-center justify-center">
+                      <Icon className="h-5 w-5 text-amber" />
+                    </span>
+                    <h3 className="mt-4 font-head font-semibold">{e.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
+                  </div>
+                </RevealGroup>
+              );
+            })}
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-stone-900">
-            The Details Matter
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {extras.map((e) => (
-            <RevealGroup key={e.title} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-stone-50 border border-stone-100 text-stone-600 flex items-center justify-center mb-4">
-                <e.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-stone-800">{e.title}</h3>
-              <p className="text-sm text-stone-500 mt-2 leading-relaxed">{e.desc}</p>
-            </RevealGroup>
-          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="px-6 pb-20">
-        <div className="max-w-6xl mx-auto bg-stone-900 rounded-3xl px-6 py-12 text-center">
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
-            See It Run on a Live Catalog
-          </h2>
-          <p className="text-stone-400 mt-3 max-w-xl mx-auto">
-            Open the dashboard and run the Gemini agent on the demo SKUs — no signup, no setup.
-          </p>
-          <Link
-            to="/dashboard"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 rounded-xl font-bold mt-8 shadow-lg shadow-blue-600/30 transition-colors"
-          >
-            Open the Dashboard
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+      <section className="px-5 py-20 md:px-6">
+        <RevealGroup>
+          <div className="accent-edge panel mx-auto max-w-4xl p-8 text-center md:p-12">
+            <p className="eyebrow-amber">see it on your catalog</p>
+            <h2 className="mx-auto mt-3 max-w-2xl font-display text-3xl uppercase tracking-tight md:text-5xl">
+              Open the workspace and run it on real SKUs
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink-soft md:text-base">
+              Demo catalog included. Upload a CSV or add products by hand — no
+              signup, no setup.
+            </p>
+            <Link to="/dashboard" className="btn btn-primary mt-8">
+              Try it free
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </RevealGroup>
       </section>
     </div>
   );

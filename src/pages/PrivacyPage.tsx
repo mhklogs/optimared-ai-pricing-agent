@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import RevealGroup from "../components/RevealGroup";
 import usePageMeta from "../lib/usePageMeta";
 
@@ -54,70 +54,72 @@ const sections = [
       "You may also object to or restrict certain processing by contacting us.",
     ],
   },
-  {
-    title: "7. Contact"
-  }
 ];
 
 export default function PrivacyPage() {
-  usePageMeta("Privacy Policy — OptimaRed");
+  usePageMeta(
+    "Privacy Policy — Optimared",
+    "How Optimared collects, uses, and protects information on the pricing platform."
+  );
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased">
+    <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-stone-200">
-        <div className="absolute inset-0 bg-[radial-gradient(#e7e5e4_1px,transparent_1px)] [background-size:22px_22px]" />
-        <div className="relative px-6 py-20 md:py-24 max-w-4xl mx-auto">
-          <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight text-stone-900">
+      <section className="relative overflow-hidden border-b border-line/60">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 hud-grid" />
+          <div className="aurora -top-24 left-[20%] h-64 w-64 bg-[#FFC53D]/10" />
+        </div>
+        <div className="relative mx-auto max-w-4xl px-6 py-20 md:py-24">
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-3.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-amber">
+            <ShieldCheck className="h-3.5 w-3.5" />
             Privacy Policy
+          </span>
+          <h1 className="mt-6 font-display text-4xl uppercase tracking-tight md:text-5xl">
+            Your data, your pricing
           </h1>
-          <p className="text-stone-500 text-lg mt-4">
+          <p className="mt-4 text-lg text-ink-soft">
             Last updated: September 17, 2026
           </p>
         </div>
       </section>
 
-      <section className="py-20 px-6 max-w-4xl mx-auto">
+      <section className="mx-auto max-w-3xl px-6 py-20">
         <RevealGroup className="space-y-8">
-          <p className="text-stone-500 leading-relaxed">
-            This Privacy Policy explains how OptimaRed ("we", "our", "us") collects, uses,
-            and protects information when you use our dynamic pricing platform. It applies
-            to the website, dashboard, and API.
+          <p className="leading-relaxed text-ink-soft">
+            This Privacy Policy explains how Optimared ("we", "our", "us")
+            collects, uses, and protects information when you use our dynamic
+            pricing platform. It applies to the website, dashboard, and API.
           </p>
 
           {sections.map((s) => (
-            <div
-              key={s.title}
-              className="bg-white border border-stone-200 rounded-2xl p-7 shadow-sm"
-            >
-              <h2 className="font-display font-bold text-xl text-stone-800 mb-3">{s.title}</h2>
-              {s.body ? (
-                <ul className="space-y-2.5">
-                  {s.body.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-stone-600 leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-sm text-stone-600 leading-relaxed">
-                  Questions about this policy? Email{" "}
-                  <span className="font-mono text-blue-600">hello@optimared.ai</span> and
-                  we'll get back to you within 24 hours.
-                </p>
-              )}
+            <div key={s.title} className="panel p-7">
+              <h2 className="font-head text-xl font-semibold text-ink">{s.title}</h2>
+              <ul className="mt-3 space-y-2.5">
+                {s.body.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink-soft">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
+
+          <div className="panel p-7">
+            <h2 className="font-head text-xl font-semibold text-ink">7. Contact</h2>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              Questions about this policy? Email{" "}
+              <span className="font-mono text-amber">hello@optimared.ai</span> and
+              we'll get back to you within 24 hours.
+            </p>
+          </div>
         </RevealGroup>
 
-        <div className="text-center mt-12">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-blue-600/20 transition-colors"
-          >
-            Back to Home
-            <ArrowRight className="w-4 h-4" />
+        <div className="mt-14 text-center">
+          <Link to="/" className="btn btn-primary">
+            Back to home
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
