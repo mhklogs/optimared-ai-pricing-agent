@@ -2,51 +2,51 @@
 
 /*
   Optimared — AI dynamic pricing agent.
-  Light editorial design: warm paper ground, deep ink, a single amber
-  accent, serif display + clean grotesque UI. Calm and human.
+  ROM editorial system: cream ground, deep ink, a single teal accent,
+  Cinzel display + Plus Jakarta Sans body. Calm and human.
 */
 @theme {
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces", ui-serif, Georgia, serif;
-  --font-head: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cinzel", ui-serif, Georgia, serif;
+  --font-head: "Cinzel", ui-serif, Georgia, serif;
+  --font-mono: "Plus Jakarta Sans", ui-monospace, monospace;
 
-  --color-paper: #f7f5f1;
-  --color-surface: #ffffff;
-  --color-abyss: #f1ede6;
+  --color-paper: #F9F8F6;
+  --color-surface: #FFFFFF;
+  --color-abyss: #F2F0EC;
 
-  --color-line: rgba(28, 25, 23, 0.12);
-  --color-line-soft: rgba(28, 25, 23, 0.08);
+  --color-line: rgba(26, 26, 26, 0.12);
+  --color-line-soft: rgba(26, 26, 26, 0.08);
 
-  --color-ink: #1c1917;
-  --color-ink-soft: #57534e;
-  --color-muted: #7a746a;
+  --color-ink: #1A1A1A;
+  --color-ink-soft: #5B5648;
+  --color-muted: #8A8578;
 
-  --color-amber: #b45309;
-  --color-amber-soft: #d97706;
-  --color-mint: #059669;
-  --color-volt: #0e7490;
-  --color-violet: #7c3aed;
+  --color-amber: #146C5C;
+  --color-amber-soft: #3F8F76;
+  --color-mint: #2EC4B0;
+  --color-volt: #3F8F76;
+  --color-violet: #3F8F76;
 
-  /* Repoint the stock blue scale at a warm amber ramp so every legacy
-     blue utility (buttons, focus rings, chips) renders amber. */
-  --color-blue-50: #fff7e6;
-  --color-blue-100: #fdebc9;
-  --color-blue-200: #f9dba0;
-  --color-blue-300: #f5c974;
-  --color-blue-400: #edab3f;
-  --color-blue-500: #e39a2e;
-  --color-blue-600: #c77f19;
-  --color-blue-700: #a5630f;
+  /* Repoint the stock blue scale at the teal accent ramp so every
+     legacy blue utility (buttons, focus rings, chips) renders teal. */
+  --color-blue-50: #EBF3F0;
+  --color-blue-100: #DCEAE5;
+  --color-blue-200: #B9D6CC;
+  --color-blue-300: #85B8A8;
+  --color-blue-400: #3F8F76;
+  --color-blue-500: #146C5C;
+  --color-blue-600: #0E4638;
+  --color-blue-700: #0A362C;
 }
 
 :root {
-  --bg: #f7f5f1;
-  --accent: #b45309;
-  --accent-soft: #d97706;
-  --muted: #7a746a;
-  --line: rgba(28, 25, 23, 0.12);
-  --glass: rgba(255, 255, 255, 0.82);
+  --bg: #F9F8F6;
+  --accent: #146C5C;
+  --accent-soft: #3F8F76;
+  --muted: #8A8578;
+  --line: rgba(26, 26, 26, 0.12);
+  --glass: rgba(255, 255, 255, 0.92);
 }
 
 * {
@@ -58,28 +58,28 @@ body,
 #root {
   height: 100%;
   background: var(--bg);
-  color: #1c1917;
-  font-family: "Instrument Sans", system-ui, sans-serif;
+  color: #1A1A1A;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgba(242, 179, 61, 0.45);
-  color: #1c1917;
+  background: rgba(20, 108, 92, 0.22);
+  color: #1A1A1A;
 }
 
 .font-display {
-  font-family: "Fraunces", ui-serif, Georgia, serif;
+  font-family: "Cinzel", ui-serif, Georgia, serif;
   font-weight: 560;
   letter-spacing: -0.01em;
 }
 .font-head {
-  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 .font-mono,
 code {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "Plus Jakarta Sans", ui-monospace, monospace;
 }
 
 /* quiet warm scrollbar */
@@ -88,12 +88,12 @@ code {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f7f5f1;
+  background: #F9F8F6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d8cfc1;
+  background: #B9D6CC;
   border-radius: 12px;
-  border: 2px solid #f7f5f1;
+  border: 2px solid #F9F8F6;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-soft);
@@ -107,7 +107,7 @@ code {
   border-radius: 1.1rem;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 16px 40px -28px rgba(28, 25, 23, 0.28);
+    0 16px 40px -28px rgba(26, 26, 26, 0.28);
 }
 .panel::before {
   content: "";
@@ -115,7 +115,7 @@ code {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(120deg, rgba(217, 119, 6, 0.06), transparent 40%);
+  background: linear-gradient(120deg, rgba(20, 108, 92, 0.08), transparent 40%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -147,7 +147,7 @@ code {
   right: 1.2rem;
   top: -1px;
   height: 1px;
-  background: linear-gradient(90deg, var(--accent-soft), rgba(217, 119, 6, 0.25), transparent);
+  background: linear-gradient(90deg, var(--accent-soft), rgba(20, 108, 92, 0.25), transparent);
 }
 
 /* ---------- legacy neon classes ---------- */
@@ -162,7 +162,7 @@ code {
 /* ---------- eyebrows ---------- */
 .eyebrow,
 .eyebrow-amber {
-  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   font-size: 0.9rem;
   text-transform: none;
   letter-spacing: 0;
@@ -176,8 +176,8 @@ code {
 /* ---------- background scaffolds ---------- */
 .hud-grid {
   background-image:
-    linear-gradient(rgba(28, 25, 23, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 25, 23, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(26, 26, 26, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.045) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 30%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 30%, transparent 100%);
@@ -198,7 +198,7 @@ code {
   gap: 0.5rem;
   border-radius: 999px;
   padding: 0.8rem 1.7rem;
-  font-family: "Instrument Sans", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   transition:
     background 0.2s ease,
@@ -211,20 +211,20 @@ code {
   transform: translateY(-1px);
 }
 .btn-primary {
-  background: #1c1917;
-  color: #f7f5f1;
-  box-shadow: 0 14px 32px -18px rgba(28, 25, 23, 0.55);
+  background: #1A1A1A;
+  color: #F9F8F6;
+  box-shadow: 0 14px 32px -18px rgba(26, 26, 26, 0.55);
 }
 .btn-primary:hover {
-  background: #292524;
+  background: #000000;
 }
 .btn-ghost {
   background: #ffffff;
   border: 1px solid var(--line);
-  color: #1c1917;
+  color: #1A1A1A;
 }
 .btn-ghost:hover {
-  background: #faf7f2;
+  background: #F5F3EF;
 }
 
 /* ---------- form fields ---------- */
@@ -235,7 +235,7 @@ code {
   border-radius: 0.85rem;
   padding: 0.7rem 0.95rem;
   font-size: 0.875rem;
-  color: #1c1917;
+  color: #1A1A1A;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -344,7 +344,7 @@ code {
   font-size: 1.35rem;
 }
 .optimared-app .font-mono {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "Plus Jakarta Sans", ui-monospace, monospace;
   letter-spacing: 0;
 }
 
